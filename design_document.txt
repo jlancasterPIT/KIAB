@@ -1,0 +1,14 @@
+Design Document for Kennel In A Box
+
+- Integrate into Facebook / Twitter / Instgrahm
+	- Setup a basic blog portal that will post these links / pictures automatically to the respective networks
+
+- Reservation System
+	- Allow people to make reservations on the site.
+	- Have an admin interface that will show the reservations and their daily running average
+
+- Admin Reporting
+	- Track conversions (How many people on site vs how many people made a reservation) / Tie into Google Analytics
+
+- 2 / 3 Basic Templates
+	- Just create two or three basic layouts that allow those people to fill out their own text
