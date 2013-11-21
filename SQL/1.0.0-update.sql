@@ -1,0 +1,20 @@
+CREATE TABLE `reservations` (
+  `dropOffDate` date DEFAULT NULL,
+  `pickUpDate` date DEFAULT NULL,
+  `numOfDogs` int(10) DEFAULT NULL,
+  `vaccineRecordLocation` varchar(255) DEFAULT NULL,
+  `dogName` varchar(25) DEFAULT NULL,
+  `dogAge` int(4) DEFAULT NULL,
+  `dogBreed` varchar(255) DEFAULT NULL,
+  `listOfAllergies` text,
+  `listOfMedications` text,
+  `listOfFleaTreatment` text,
+  `feedingRequirements` text,
+  `hasTreats` int(2) DEFAULT NULL,
+  `hasWalks` int(2) DEFAULT NULL,
+  `hasDogPark` int(2) DEFAULT NULL,
+  `hasPlayTime` int(2) DEFAULT NULL,
+  `clientName` varchar(255) DEFAULT NULL,
+  `clientPhoneNumber` varchar(255) DEFAULT NULL,
+  `clientEmail` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
