@@ -5,40 +5,18 @@
   	public function createReservation($reservationArray) {
 		$CI =& get_instance();
 		$CI->load->database();
-
-		/**
-		 * Example Reservation Array
-		 * $reservationArray = array(
-         *      'dropOffDate' => $dropOffDate,
-         *      'pickUpDate' => $pickUpDate,
-         *      'vaccineRecordLocation' => $vaccineRecordLocation,
-         *      'dogName' => $dogName,
-         *      'dogAge' => $dogAge,
-         *      'dogBreed' => $dogBreed,
-         *      'listOfAllergies' => $listOfAllergies,
-         *      'listOfMedications' => $listOfMedications,
-         *      'listOfFleaTreatment' => $listOfFleaTreatment,
-         *      'feedingRequirements' => $feedingRequirements,
-         *      'hasTreats' => $hasTreats,
-         *      'hasWalks' => $hasWalks,
-         *      'hasDogPark' => $hasDogPark,
-         *      'hasPlayTime' => $hasPlayTime,
-         *      'clientName' => $clientName,
-         *      'clientPhoneNumber' => $clientPhoneNumber,
-         *      'clientEmail' => $clientEmail
-         * 	);
-         *
-         **/
-
 		return $CI->db->insert('reservations', $reservationArray);
   	}
 
   	public function sendReminderEmails($clientDomain) {
-  		$this->db->select('clientName, clientEmail, dogName, dropOffDate');
-		$this->db->from('reservations');
-  		$this->db->where('dropOffDate BETWEEN ' . date("Y-m-d") . ' AND ' . date("Y-m-d", strtotime("today +7 days")));
+		$CI =& get_instance();
+                $CI->load->database();
 
-		$query = $this->db->get();
+  		$CI->db->select('clientName, clientEmail, dogName, dropOffDate');
+		$CI->db->from('reservations');
+  		$CI->db->where('dropOffDate BETWEEN ' . date("Y-m-d") . ' AND ' . date("Y-m-d", strtotime("today +7 days")));
+
+		$query = $CI->db->get();
 
 		foreach ($query->result() as $row)
 		{
@@ -64,11 +42,14 @@
   	}
 
   	public function sendAdminWeeklyReport($clientContactEmail) {
-  		$this->db->select('clientName, clientEmail, dogName, dropOffDate');
-		$this->db->from('reservations');
-  		$this->db->where('dropOffDate BETWEEN ' . date("Y-m-d") . ' AND ' . date("Y-m-d", strtotime("today +7 days")));
+		$CI =& get_instance();
+                $CI->load->database();
 
-		$query = $this->db->get();
+  		$CI->db->select('clientName, clientEmail, dogName, dropOffDate');
+		$CI->db->from('reservations');
+  		$CI->db->where('dropOffDate BETWEEN ' . date("Y-m-d") . ' AND ' . date("Y-m-d", strtotime("today +7 days")));
+
+		$query = $CI->db->get();
 
 		$message = "Below is a listing of all your reservations for this week!\r\n";
 
@@ -88,6 +69,25 @@
 		    'X-Mailer: PHP/' . phpversion();
 
 		mail($clientContactEmail, $subject, $message, $headers);
+	}
+
+	public function getAllReservations($from = NULL, $to = NULL) {
+		$CI =& get_instance();
+                $CI->load->database();
+
+		$CI->db->select('*');
+		$CI->db->from('reservations');
+		if($from != NULL && $to != NULL) {
+			$CI->db->where('dropOffDate BETWEEN ' . date("Y-m-d", strtotime($from)) . ' AND ' . date("Y-m-d", strtotime($to));
+		}
+
+		$query = $CI->db->get();
+
+		foreach ($query->result() as $row) {
+			$data[] = $row;
+		}
+
+		return $data;
 	}
 }
 
