@@ -1,11 +1,13 @@
 Design Document for Kennel In A Box
 
-- Integrate into Facebook / Twitter / Instgrahm
-	- Setup a basic blog portal that will post these links / pictures automatically to the respective networks
+- Integrate into Facebook / Twitter
+	- Got the facebook module to turn on and off for the homepage and main link in client config
+	- Need to integrate the class into an admin interface
 
 - Reservation System
 	- Allow people to make reservations on the site.
 	- Have an admin interface that will show the reservations and their daily running average
+	- Finished the class and the mysql database
 
 - Admin Reporting
 	- Track conversions (How many people on site vs how many people made a reservation) / Tie into Google Analytics
@@ -20,3 +22,7 @@ Design Document for Kennel In A Box
 - Account Management Integration Plugin
 
 - Client Testimonials Plugin
+	- Finished ability to turn it off and on
+	- Need to create an admin interface to control it and enter the data
+
+Need to add in client email and handle the uploading of the file for vaccines
