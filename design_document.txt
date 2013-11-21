@@ -12,3 +12,11 @@ Design Document for Kennel In A Box
 
 - 2 / 3 Basic Templates
 	- Just create two or three basic layouts that allow those people to fill out their own text
+
+- Mobile Plugin
+
+- Newsletter Integration Plugin
+
+- Account Management Integration Plugin
+
+- Client Testimonials Plugin
