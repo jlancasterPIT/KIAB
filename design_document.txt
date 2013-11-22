@@ -14,10 +14,16 @@ Design Document for Kennel In A Box
 	- Just create two or three basic layouts that allow those people to fill out their own text
 
 - Mobile Plugin
-
+	- Two or three templates that take the information from the real site and put it into a mobile format
+	
 - Newsletter Integration Plugin
+	- Store all emails and names in a database
+	- Get all account management emails IF account management integration enabled
 
 - Account Management Integration Plugin
+	- Store all information for reservation
+	- Store credit card token or paypal email IF paypal integration is enabled
+	- On account page allow them to make a reservation in one click IF reservation system is enabled
 
 - Client Testimonials Plugin
 	- Finished ability to turn it off and on
@@ -27,3 +33,12 @@ Design Document for Kennel In A Box
 	- Have the ability to generate a PDF/Image of a flier
 	- Post that image to twitter and facebook
 	- Send out an email IF the newletter integration plugin has been purchased and activated
+
+- Write scripts for reoccuring payments for all of MY clients
+	- Collect credit card data
+	- Store credit card TOKEN
+	- Create table to store client information, credit card token, and look in the clientconfig table for which modules they have enabled
+
+- Write library that allows the CLIENT to setup online payments using paypal to accept credit cards or paypal as a form of payment
+	- Add admin page to allow them to enter tokens and account information
+	- Add admin page that allows them to see all of their payments
