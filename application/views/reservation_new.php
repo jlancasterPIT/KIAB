@@ -3,6 +3,17 @@
       
       <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
 
+      <script type="text/javascript">
+        function numDogs() {
+          var numberOfDogs = $("#numOfDogs option:selected").val();
+          if(numberOfDogs > 1) {
+            $("#boardDog").show();
+          } else {
+            $("#boardDog").hide();
+          }
+        }
+      </script>
+
       <!-- Jumbotron -->
       <div class="jumbotron">
         <div class="row">
@@ -17,7 +28,7 @@
       	        <p class="lead">Please fill out the form below to reserve a room for your pet!</p>
                 <div class="row" style="font-size: 16px;" align="left">
                   <div class="col-md-12">
-                    <form role="form" action="/reservation.html" method="post">
+                    <form role="form" action="/reservation.html" method="post" enctype="multipart/form-data">
                       <div id="step1" style="display: block;">
                         <div class="form-group">
                           <label for="datetimepicker">Drop Off Date:</label>
@@ -43,32 +54,36 @@
                         </div>
                         <div class="form-group">
                           <label for="numOfDogs">Number of Dogs</label>
-                          <select name="numOfDogs" id="numOfDogs" class="form-control">
+                          <select name="numOfDogs" id="numOfDogs" class="form-control" onchange="numDogs();">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                           </select>
+                          <span id="boardDog" style="display: none;">
+                            <label>Board dogs together? (MAX 2 PER RUN)</label>
+                            <input type="checkbox" name="boardTogether" />
+                          </span>
                         </div>
                         <div class="form-group">
                           <label for="vaccineUpload">Vaccine Record Upload</label>
                           <p>Please inclue rabies, distemper and bordetella vaccinations</p>
-                          <input type="file" id="vaccineUpload">
+                          <input type="file" name="file" id="file" />
                           <p class="help-block">Please scan your vaccine record and upload it.</p>
                         </div>
                         <button class="btn btn-info" onclick="$('#step1').hide();$('#step2').show();return false;">Next -></button>
                       </div> <!-- End Step 1 -->
                       <div id="step2" style="display: none;">
                         <div class="form-group">
-                          <label>Dogs Name</label>
+                          <label>Dog(s) Name</label>
                           <input type="text" name="dogName" class="form-control"/>
                         </div>
                         <div class="form-group">
-                          <label>Age</label>
+                          <label>Age(s)</label>
                           <input type="text" name="dogAge" class="form-control"/>
                         </div>
                         <div class="form-group">
-                          <label>Breed</label>
+                          <label>Breed(s)</label>
                           <input type="text" name="dogBreed" class="form-control"/>
                         </div>
                         <button class="btn btn-info" onclick="$('#step2').hide();$('#step3').show();return false;">Next -></button>

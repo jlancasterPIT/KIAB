@@ -7,7 +7,7 @@
       <div class="jumbotron">
         <div class="row">
           <div class="col-md-12">
-	    <p class="lead">We have confirmed your reservation for <?php $reservationArray['dropoffDate']; ?>! See you then!</p>
+            <p class="lead">We have confirmed your reservation for <?php echo $reservationArray['dropOffDate']; ?>! See you then!</p>
           </div>
         </div>
       </div>
