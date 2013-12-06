@@ -15,62 +15,62 @@
 
 				<div class="widget-content">
 
-					<form action="/" role="form" class="form-horizontal col-md-7">
+					<form action="/admin/updatecompany" role="form" class="form-horizontal col-md-7">
 
 
 						<div class="form-group">
 							<label class="col-md-4">Title</label>
 							<div class="col-md-8">
-								<input type="text" name="input1" value="Double Hydrant Bed N Biscuits, Mt. Pleasant, PA 15666" class="form-control" />
+								<input type="text" name="title" value="<?php echo $clientConfig['title'];?>" class="form-control" />
 							</div>
 						</div> <!-- /.form-group -->
 
 						<div class="form-group">
 							<label class="col-md-4">Hours</label>
 							<div class="col-md-8">
-								<input type="text" name="input1" value="Monday - Saturday: 9AM-4PM" class="form-control" />
+								<input type="text" name="hours" value="<?php echo $clientConfig['hours'];?>" class="form-control" />
 							</div>
 						</div> <!-- /.form-group -->
 
 						<div class="form-group">
 							<label class="col-md-4">Company Name</label>
 							<div class="col-md-8">
-								<input type="text" name="input1" value="Double Hydrant" class="form-control" />
+								<input type="text" name="company_name" value="<?php echo $clientConfig['company_name']; ?>" class="form-control" />
 							</div>
 						</div> <!-- /.form-group -->
 
 						<div class="form-group">
 							<label class="col-md-4">Address</label>
 							<div class="col-md-8">
-								<textarea name="text1" class="form-control" rows="3">142 Airport Road, Mt. Pleasant, PA 15666</textarea>
+								<textarea name="address" class="form-control" rows="3"><?php echo $clientConfig['address'];?></textarea>
 							</div>
 						</div> <!-- /.form-group -->
 
 						<div class="form-group">
 							<label class="col-md-4">Phone Number</label>
 							<div class="col-md-8">
-								<input type="text" name="input1" value="724-757-0855" class="form-control" />
+								<input type="text" name="phone_number" value="<?php echo $clientConfig['phone_number']; ?>" class="form-control" />
 							</div>
 						</div> <!-- /.form-group -->
 
 						<div class="form-group">
 							<label class="col-md-4">Detailed Pick Up</label>
 							<div class="col-md-8">
-								<input type="text" name="input1" value="Monday - Saturday : 9AM - 11AM : 2PM - 4PM" class="form-control" />
+								<input type="text" name="detailed_pickup" value="<?php echo $clientConfig['detailed_pickup']; ?>" class="form-control" />
 							</div>
 						</div> <!-- /.form-group -->
 
 						<div class="form-group">
 							<label class="col-md-4">Detailed Drop Off</label>
 							<div class="col-md-8">
-								<input type="text" name="input1" value="Monday - Saturday : 9AM - 11AM" class="form-control" />
+								<input type="text" name="detailed_dropoff" value="<?php echo $clientConfig['detailed_dropoff']; ?>" class="form-control" />
 							</div>
 						</div> <!-- /.form-group -->
 
 						<div class="form-group">
 							<label class="col-md-4">Company Email</label>
 							<div class="col-md-8">
-								<input type="text" name="input1" value="deb@doublehydrant.com" class="form-control" />
+								<input type="text" name="company_email" value="<?php echo $clientConfig['company_email']; ?>" class="form-control" />
 							</div>
 						</div> <!-- /.form-group -->
 
@@ -83,8 +83,7 @@
 							<div class="col-md-8">
 								<div class="input-group">
 								  <span class="input-group-addon">$</span>
-								  <input type="text" class="form-control" value="21">
-								  <span class="input-group-addon">.00</span>
+								  <input type="text" class="form-control" name="price_pernight" value="<?php echo $clientConfig['price_pernight']; ?>">
 								</div>
 							</div>
 
@@ -99,8 +98,7 @@
 							<div class="col-md-8">
 								<div class="input-group">
 								  <span class="input-group-addon">$</span>
-								  <input type="text" class="form-control" value="35">
-								  <span class="input-group-addon">.00</span>
+								  <input type="text" class="form-control" name="price_pernight_onerun" value="<?php echo $clientConfig['price_pernight_onerun']; ?>">
 								</div>
 							</div>
 
@@ -115,8 +113,7 @@
 							<div class="col-md-8">
 								<div class="input-group">
 								  <span class="input-group-addon">$</span>
-								  <input type="text" class="form-control" value="7">
-								  <span class="input-group-addon">.00</span>
+								  <input type="text" class="form-control" name="price_latefee" value="<?php echo $clientConfig['price_latefee']; ?>">
 								</div>
 							</div>
 
@@ -125,9 +122,11 @@
 						<div class="form-group">
 							<label class="col-md-4">Facebook URL</label>
 							<div class="col-md-8">
-								<input type="text" name="input1" value="https://www.facebook.com/pages/Double-Hydrant/357471531055907" class="form-control" />
+								<input type="text" name="facebook_url" value="<?php echo $clientConfig['facebook_url']; ?>" class="form-control" />
 							</div>
 						</div> <!-- /.form-group -->
+
+						<input type="submit" name="update_company" class="form-control" value="Update Company Details!"/>
 
 					</form>
 

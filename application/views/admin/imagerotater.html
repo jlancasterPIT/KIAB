@@ -1,0 +1,61 @@
+<div class="main">
+
+    <div class="container">
+
+      <div class="row">
+
+      	<div class="col-md-12">
+
+      		<div class="widget stacked">
+
+      		<?php if($this->session->flashdata('message')) { ?>
+				<div class="alert alert-success">
+					<a class="close" data-dismiss="alert">&#215;</a>
+					<?php echo $this->session->flashdata('message'); ?>
+				</div>
+			<?php } ?>
+      			<div class="widget-header">
+					<i class="icon-tasks"></i>
+					<h3>Homepage Image Rotation</h3>
+				</div> <!-- /.widget-header -->
+
+				<div class="widget-content">
+
+					<form action="/admin/addimagerotation" role="form" class="form-horizontal col-md-7" method="post" enctype="multipart/form-data">
+
+						<div class="form-group">
+							<label class="col-md-4">Picture</label>
+							<div class="col-md-8">
+								<input type="file" name="pictureLocation" title="Search for picture" style="padding-bottom: 45px;" class="form-control" />
+							</div>
+						</div> <!-- /.form-group -->
+
+						<input type="submit" name="add_picture" class="form-control" value="Add Photo to Homepage Rotater!"/>
+
+					</form>
+					
+					<table style="margin-top: 350px;" class="table table-striped">
+						<thead>
+							<th>Picture</th>
+							<th>Delete</th>
+						</thead>
+						<tbody>
+						<?php foreach($clientImageRotater->result() as $imageRotate) {
+							echo "<tr>";
+							echo "<td><img src='".$imageRotate->imagePath."' width='250px;'/></td><td><a href='/admin/deletepicture?id=".$imageRotate->id."'><img height='45px;' src='/img/delete.png' /></a></td>";
+							echo "</tr>";
+						} ?>
+						</tbody>
+					</table>
+				</div> <!-- /.widget-content -->
+
+			</div> <!-- /.widget -->
+
+      	</div> <!-- /.col-md-12 -->
+
+
+      </div> <!-- /.row -->
+
+    </div> <!-- /container -->
+    
+</div> <!-- /main -->

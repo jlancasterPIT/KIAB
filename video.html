@@ -1,0 +1,9 @@
+<head>
+<script>
+setInterval(function() {
+    var myImageElement = document.getElementById('myImage');
+    myImageElement.src = 'image1.jpeg?rand=' + Math.random();
+}, 1000);
+</script>
+</head>
+<img id="myImage" src="image1.jpeg" />

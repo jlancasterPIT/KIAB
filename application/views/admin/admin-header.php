@@ -22,11 +22,18 @@
 
     <link href="/css/custom.css" rel="stylesheet">
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.file-input.js"></script>
+
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+    <script type="javascript">
+      $( document ).ready(function() {
+        $('input[type=file]').bootstrapFileInput();
+      });
+    </script>
   </head>
 
 <body>
@@ -115,10 +122,12 @@
               <i class="icon-th"></i>
               <span>Modify Content</span>
               <b class="caret"></b>
-            </a>      
+            </a>
           
             <ul class="dropdown-menu">
               <li><a href="/admin/companydetails.html">Company Details</a></li>
+              <li><a href="/admin/clienttest.html">Client Testimonials</a></li>
+              <li><a href="/admin/imagerotater.html">Homepage Image Rotation</a></li>
               <!--<li><a href="/forms.html">Form Styles</a></li>
               <li><a href="/jqueryui.html">jQuery UI</a></li>
               <li><a href="/charts.html">Charts</a></li>

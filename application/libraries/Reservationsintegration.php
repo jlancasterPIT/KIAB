@@ -5,31 +5,10 @@
 	class Reservationsintegration {
   	
 	  	public function createReservation($reservationArray) {
-	  		/*
-'dropOffDate' => string '1969-12-31' (length=10)
-'pickUpDate' => string '1969-12-31' (length=10)
-'vaccineRecordLocation' => string '/uploads/' (length=9)
-'numOfDogs' => string '1' (length=1)
-'boardTogether' => int 0
-'dogName' => string '' (length=0)
-'dogAge' => string '' (length=0)
-'dogBreed' => string '' (length=0)
-'listOfAllergies' => string '' (length=0)
-'listOfMedications' => string '' (length=0)
-'listOfFleaTreatment' => string '' (length=0)
-'feedingRequirements' => string '' (length=0)
-'hasTreats' => string '0' (length=1)
-'hasWalks' => string '0' (length=1)
-'hasDogPark' => string '0' (length=1)
-'hasPlayTime' => string '0' (length=1)
-'clientName' => string '' (length=0)
-'clientPhoneNumber' => string '' (length=0)
-'clientEmail' => string '' (length=0)
-	  		*/
 			$pdf = new FPDF();
 			$pdf->AddPage();
 
-			$pdf->Image('/var/www/img/logo.png', 10, 10, 50);
+			$pdf->Image('/var/sites/doublehydrant/img/logo.png', 10, 10, 50);
 
 			$pdf->SetFont('Times', 'B', 16);
 			$pdf->SetXY(100, 10);
@@ -221,13 +200,13 @@
 			$pdf->SetFont('Times', 'B', 16);
 			$pdf->SetXY(10, 10);
 			$pdf->Cell(40,10,'Vaccinne Upload');
-			$pdf->Image('/var/www/'.$reservationArray['vaccineRecordLocation'],5,20,200);
+			$pdf->Image('/var/sites/doublehydrant/'.$reservationArray['vaccineRecordLocation'],5,20,200);
 
 			$filename = md5(time().time()).'.pdf';
-			$pdf->Output('/var/www/reservation_pdfs/'.$filename, 'F');
+			$pdf->Output('/var/sites/doublehydrant/reservation_pdfs/'.$filename, 'F');
 			
-			$reservationArray['pdfLink'] = '/var/www/reservation_pdfs/'.$filename;
-			/*$CI =& get_instance();
+			$reservationArray['pdfLink'] = '/var/sites/doublehydrant/reservation_pdfs/'.$filename;
+			$CI =& get_instance();
 
 			$CI->load->library('email');
 
@@ -238,15 +217,16 @@
 
 			$CI->email->initialize($config);
 
-			$CI->email->from('webmaster@jeremylancasterconsulting.com', 'Jeremy Lancaster Consulting');
-			$CI->email->to('jeremy@jeremylancasterconsulting.com');
+			$CI->email->from('webmaster@doublehydrant.com', 'Double Hydrant');
+			$CI->email->to('deb@doublehydrant.com');
+			$CI->email->cc('jeremy@jeremylancasterconsulting.com');
 
 			$CI->email->subject('New Reservation');
 			$CI->email->message('You have a new reservation! Attached is the details in PDF form!');
 
 			$CI->email->attach($reservationArray['pdfLink']);
 
-			$CI->email->send();*/
+			$CI->email->send();
 
 			$CI->load->database();
 			return $CI->db->insert('reservations', $reservationArray);
@@ -287,7 +267,7 @@
 
 	  	public function sendAdminWeeklyReport($clientContactEmail) {
 			$CI =& get_instance();
-	                $CI->load->database();
+            $CI->load->database();
 
 	  		$CI->db->select('clientName, clientEmail, dogName, dropOffDate');
 			$CI->db->from('reservations');
@@ -317,21 +297,17 @@
 
 		public function getAllReservations($from = NULL, $to = NULL) {
 			$CI =& get_instance();
-	                $CI->load->database();
+            $CI->load->database();
 
 			$CI->db->select('*');
 			$CI->db->from('reservations');
 			if($from != NULL && $to != NULL) {
-				$CI->db->where('dropOffDate BETWEEN ' . date("Y-m-d", strtotime($from)) . ' AND ' . date("Y-m-d", strtotime($to)));
+				$CI->db->where('dropOffDate BETWEEN "' . date("Y-m-d", strtotime($from)) . '" AND "' . date("Y-m-d", strtotime($to)) . '"');
 			}
 
 			$query = $CI->db->get();
 
-			foreach ($query->result() as $row) {
-				$data[] = $row;
-			}
-
-			return $data;
+			return $query->result();
 		}
 	}
 

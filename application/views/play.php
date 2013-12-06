@@ -2,7 +2,7 @@
       <div class="jumbotron">
         <div class="row">
         	<div class="col-md-3">
-        		<h3 class="text-muted"><img style="width: 350px;" src="/img/dog chasing ball.jpg" /></h3>
+        		<h3 class="text-muted"><img style="border-radius: 15px; border: 5px none black; top: 0px; left: 0px; width: 430px;" src="/img/playing.jpeg" /></h3>
         	</div>
         	<div class="col-md-2">
         	&nbsp;

@@ -119,15 +119,15 @@ h1 {
     box-shadow: 2px 2px 4px 1px #fff;
     background-color: white;
 }
-.image {
-  height: 250px;
-}
-.image img
-{
+.dogPicImages {
+  height: 350px;
   -moz-border-radius: 15px;
   border-radius: 15px;
   border: 5px;
   border-color: black;
+
+  position: relative; 
+  overflow: hidden;
   
   top:0;
   left:0;
@@ -136,38 +136,23 @@ h1 {
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.li-scroller.1.0.js"></script>
+<script type="text/javascript" src="js/jquery.cycle.all.js"></script>
+
 <link rel="stylesheet" href="css/li-scroller.css" type="text/css" media="screen" /> 
 <script>
-  $(function(){
-    $("ul#thankyous").liScroll();
-    $("ul#thankyou2").liScroll();
+  $( document ).ready(function() {
+    
+    $('#clientTestimonials').cycle({ 
+        fx:     'scrollUp', 
+        timeout: 6000, 
+        delay:  -2000 
+    });
 
-    $('.image img:gt(0)').hide(); // to hide all but the first image when page loads
-
-    setInterval(function()
-    {
-        $('.image :first-child').hide()
-            .next().show().end().appendTo('.image');
-
-        if($('#client1').is(':visible')) {
-          $("#client1").hide();
-          $("#client2").show();
-        } else {
-          $("#client2").hide();
-          $("#client1").show();
-        }
-    },5000);  
-
-    setInterval(function()
-    {
-        if($('#client1').is(':visible')) {
-          $("#client1").hide();
-          $("#client2").show();
-        } else {
-          $("#client2").hide();
-          $("#client1").show();
-        }
-    },3500);  
+    $('#dogPictures').cycle({ 
+        fx:     'scrollLeft', 
+        timeout: 6000, 
+        delay:  -2000 
+    });
   });
 </script>
 </head>
@@ -176,6 +161,7 @@ h1 {
     <?php if($clientConfig['facebook'] == '1') { ?>
       <br />
       <div style="float: left;">
+	<a target="_blank" href="https://twitter.com/Double_Hydrant"><img style="width: 75px;" src="img/twitter-icon.png" /></a>
         <a target="_blank" href="<?php echo $clientConfig['facebook_url']; ?>"><img style="width: 75px;" src="img/facebook.png" /></a>
       </div>
     <?php } ?>

@@ -11,6 +11,9 @@ class Homepage extends CI_Controller {
 		$data['clientConfig'] = $this->loadclientconfig->loadConfig();
 		$data['page'] = $page;
 
+		$data['clientTestimonials'] = $this->db->get('clientTestimonials');
+		$data['imgRotater'] = $this->db->get('clientImgRotater');
+
 		$this->load->view('header.php', $data);
 		$this->load->view('homepage.php', $data);
 		$this->load->view('footer.php', $data);

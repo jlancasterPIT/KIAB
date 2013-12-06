@@ -3,11 +3,10 @@
         <div class="row">
         	<div class="col-md-3">
         		<h3 class="text-muted">
-              <div class="image" style="-moz-border-radius: 15px;border-radius: 15px;">
-                <img src="img/Scroll1.jpg"  />
-                <img src="img/Scroll2.jpg"  />
-                <img src="img/Scroll3.jpg"  />
-                <img src="img/Scroll5.jpg"  />
+              <div id="dogPictures" class="dogPicImages">
+              <?php foreach($imgRotater->result() as $image) { ?>
+                <img class="dogPicImages" src="<?php echo $image->imagePath; ?>"  />
+              <?php } ?>
             </div>  
             </h3>
         	</div>
@@ -23,56 +22,38 @@
         </div>         
       </div>
 
-      <?php if($clientConfig['clientTestimonals'] == '1') { ?>
-      <div class="row" id="client1">
-        <div class="col-md-2">
-        &nbsp;
-        </div>
-        <div class="col-md-8">
-          <div class="row" align="center">
-            <div class="col-md-1">
-            &nbsp;
-            </div>
-            <div class="col-md-4" align="center">
-              <p><img src="img/clientT1.png" width="175px;"/></p>
-            </div>
-            <div class="col-md-6" align="center">
-              <b>Client Testimonials</b><br /><br />
-              <i>"My husband and I were so pleased with the care our dog, Arya, received from family-owned and operated Double Hydrant. Our concerns were put to rest allowing us to enjoy our vacation even more. Arya had a clean, safe place to sleep with access to the outside, fresh air. She went on walks and burned off energy running with the other guests in the fenced-in play yard. The staff is kind and friendly and the cost is affordable. We won't board anywhere else!"</i> - <b>Ryan and Rachel H.</b>
-            </div>
-            <div class="col-md-1">
-            &nbsp;
+      <?php if($clientConfig['clientTestimonals'] == '1') { 
+      $i = 1;
+      ?>
+      <div id="clientTestimonials" style="position: relative; overflow: hidden;">
+        <?php
+        foreach ( $clientTestimonials->result() as $clientT ) { ?>
+        <div class="row" id="client<?php echo $i; ?>" style="display: none;">
+          <div class="col-md-2">
+          &nbsp;
+          </div>
+          <div class="col-md-8">
+            <div class="row" align="center">
+              <div class="col-md-1">
+              &nbsp;
+              </div>
+              <div class="col-md-4" align="center">
+                <p><img src="<?php echo $clientT->pictureLocation; ?>" width="175px;"/></p>
+              </div>
+              <div class="col-md-6" align="center">
+                <b>Client Testimonials</b><br /><br />
+                <i>"<?php echo $clientT->text; ?>"</i> - <b><?php echo $clientT->name;?></b>
+              </div>
+              <div class="col-md-1">
+              &nbsp;
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-2">
-        &nbsp;
-        </div>
-      </div>
-      <div class="row" id="client2" style="display: none;">
-        <div class="col-md-2">
-        &nbsp;
-        </div>
-        <div class="col-md-8">
-          <div class="row" align="center">
-            <div class="col-md-1">
-            &nbsp;
-            </div>
-            <div class="col-md-4" align="center">
-              <p><img src="img/clientT2.jpg" width="175px;"/></p>
-            </div>
-            <div class="col-md-6" align="center">
-              <b>Client Testimonials</b><br /><br />
-              <i>"We loved the experience of Double Hyrdant! Dexter and Shiro were mopey about coming home!!! I think they missed the resort attention and activities. We were always in contact with the kennel and never had to worry. Fair pricing that included a bath before coming home was a great perk. We will definitely come back! "</i> - <b>Michelle and Christian Turcotte</b>
-            </div>
-            <div class="col-md-1">
-            &nbsp;
-            </div>
+          <div class="col-md-2">
+          &nbsp;
           </div>
         </div>
-        <div class="col-md-2">
-        &nbsp;
-        </div>
+        <?php $i++; } ?>
       </div>
       <br /><br />
       <?php } ?>

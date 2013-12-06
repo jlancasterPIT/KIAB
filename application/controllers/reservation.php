@@ -38,7 +38,7 @@ class Reservation extends CI_Controller {
 			if (in_array($extension, $allowedExts))
 			{
 				$filename = md5($_POST['dogName'].time()).".".$extension;
-				move_uploaded_file($_FILES["file"]["tmp_name"], "/var/www/uploads/".$filename);
+				move_uploaded_file($_FILES["file"]["tmp_name"], "/var/sites/doublehydrant/uploads/".$filename);
 			}
 
 			if(isset($_POST['boardTogether'])) {

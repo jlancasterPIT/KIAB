@@ -18,7 +18,7 @@
       <div class="jumbotron">
         <div class="row">
         	<div class="col-md-3">
-        		<h3 class="text-muted"><img style="width: 350px;" src="img/dog_smiling.jpg" /></h3>
+        		<h3 class="text-muted"><img style="width: 375px; border-radius: 15px; border: 5px none black; top: 0px; left: 0px; width: 430px;" src="img/reservation.jpg" /></h3>
         	</div>
         	<div class="col-md-2">
         	&nbsp;
@@ -91,7 +91,6 @@
                       <div id="step3" style="display: none;">
                         <div class="form-group">
                           <label>Allergies</label>
-                          <input type="radio" name="allergies" value="Yes">Yes&nbsp;&nbsp;<input type="radio" name="allergies" value="No" />No<br />
                           <div id="allergies">
                             <label>List of Allergies</label><br />
                             <input type="text" name="allergyText" class="form-control" />
@@ -99,7 +98,6 @@
                         </div>
                         <div class="form-group">
                           <label>Medications</label>
-                          <input type="radio" name="medications" value="Yes">Yes&nbsp;&nbsp;<input type="radio" name="medications" value="No" />No<br />
                           <div id="medications">
                             <label>What kind and how often?</label><br />
                             <input type="text" name="medicationText" class="form-control" />
@@ -107,7 +105,6 @@
                         </div>
                         <div class="form-group">
                           <label>Flea Treatment</label>
-                          <input type="radio" name="flea" value="Yes">Yes&nbsp;&nbsp;<input type="radio" name="flea" value="No" />No<br />
                           <div id="flea">
                             <label>What brand and how often?</label><br />
                             <input type="text" name="fleaText" class="form-control" />
@@ -115,7 +112,6 @@
                         </div>
                         <div class="form-group">
                           <label>Feeding Requirements</label>
-                          <input type="radio" name="food" value="Yes">Yes&nbsp;&nbsp;<input type="radio" name="food" value="No" />No<br />
                           <div id="food">
                             <label>How much and how often?</label><br />
                             <input type="text" name="foodText" class="form-control" />

@@ -47,9 +47,9 @@
         </div>
         <div class="col-md-5">
           <h1>Pricing</h1>
-          <p>$21.20 per night single dog</p>
-          <p>$35.00 per night two dogs, same room</p>
-          <p><b>Please Note:</b><br />A <b>$7.50 late fee/DOG</b> will be added for all picks ups after 11:00AM until 4:00PM on day of check out
+          <p>$<?php echo $clientConfig['price_pernight']; ?> per night single dog</p>
+          <p>$<?php echo $clientConfig['price_pernight_onerun']; ?> per night two dogs, same room</p>
+          <p><b>Please Note:</b><br />A <b>$<?php echo $clientConfig['price_latefee']; ?> late fee/DOG</b> will be added for all picks ups after 11:00AM until 4:00PM on day of check out
           <p><a class="btn btn-primary" href="/reservation.html">Make a Reservation &raquo;</a></p>
         </div>
         <div class="col-md-1">

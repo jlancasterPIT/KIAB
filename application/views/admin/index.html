@@ -29,7 +29,8 @@
 						
 						<div class="stat">
 							<span class="stat-value">$<?php echo $revenueThisYear; ?></span>
-							Revenue Year To Date (USD)
+							Revenue YTD (USD)<br />
+							Total Days: <?php echo $revenueDays; ?>
 						</div> <!-- /stat -->
 						
 					</div> <!-- /stats -->
@@ -201,18 +202,19 @@
 							</tr>
 						</thead>
 						<tbody>
+							<?php foreach( $reservations as $reservation ) { ?>
 							<tr>
-								<td>Trident</td>
-								<td>Internet
-									 Explorer 4.0</td>
-								<td>2012-01-12</td>
+								<td><?php echo $reservation->clientName; ?></td>
+								<td><?php echo $reservation->dogName; ?></td>
+								<td><?php echo $reservation->dropOffDate; ?></td>
 								<td class="td-actions">
-									<a href="javascript:;" class="btn btn-xs btn-primary">
+									<a target="_blank" href="<?php echo str_replace('/var/sites/doublehydrant', '', $reservation->pdfLink); ?>" class="btn btn-xs btn-primary">
 										<i class="btn-icon-only icon-ok"></i><br />
 										View Reservation
 									</a>
 								</td>
 							</tr>
+							<?php } ?>
 							</tbody>
 						</table>
 					
