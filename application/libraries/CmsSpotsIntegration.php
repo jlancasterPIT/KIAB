@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-  class CmsSpotsIntegration {
+  class Cmsspotsintegration {
 
   	public function loadCmsSpots($page) {
   		$page = addslashes($page);
