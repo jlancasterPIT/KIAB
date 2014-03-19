@@ -10,7 +10,6 @@ class Homepage extends CI_Controller {
 		$this->load->library('cmsspotsintegration');
 
 		$data['cms_spots'] = $this->cmsspotsintegration->loadCmsSpots('homepage');
-		var_dump($data['cms_spots']); die();
 		$data['clientConfig'] = $this->loadclientconfig->loadConfig();
 		$data['page'] = $page;
 
