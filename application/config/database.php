@@ -50,8 +50,8 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = 'lovemykids15401';
-$db['default']['database'] = 'kiabReservations';
+$db['default']['password'] = 'swordfish15401';
+$db['default']['database'] = 'kiabReservations2';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
