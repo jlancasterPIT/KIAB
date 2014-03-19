@@ -7,7 +7,7 @@
       <div class="jumbotron">
         <div class="row">
           <div class="col-md-12">
-            <p class="lead">We have a new reservation system in the works right now that will allow online reservations. Until then please feel free to give us a call to book your stay with us!</p>
+            <p class="lead">Our Reservation system is currently offline, Please call us to book your stay!</p>
           </div>
         </div>
       </div>

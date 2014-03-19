@@ -32,13 +32,15 @@ class Reservation extends CI_Controller {
 				$hasPlayTime = "1";
 			}
 			
-			$allowedExts = array("gif", "jpeg", "jpg", "png");
-			$temp = explode(".", $_FILES["file"]["name"]);
-			$extension = end($temp);
-			if (in_array($extension, $allowedExts))
-			{
-				$filename = md5($_POST['dogName'].time()).".".$extension;
-				move_uploaded_file($_FILES["file"]["tmp_name"], "/var/sites/doublehydrant/uploads/".$filename);
+			if(isset($_FILES['file']['tmp_name'])) {
+				$allowedExts = array("gif", "jpeg", "jpg", "png");
+				$temp = explode(".", $_FILES["file"]["name"]);
+				$extension = end($temp);
+				if (in_array($extension, $allowedExts))
+				{
+					$filename = md5($_POST['dogName'].time()).".".$extension;
+					move_uploaded_file($_FILES["file"]["tmp_name"], "/var/sites/doublehydrant/uploads/".$filename);
+				}
 			}
 
 			if(isset($_POST['boardTogether'])) {
