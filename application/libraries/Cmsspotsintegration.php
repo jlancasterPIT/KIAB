@@ -10,7 +10,7 @@
   		$query = $ci->db->query('SELECT * FROM cms_spots WHERE `page` = \''.$page.'\'');
 
   		foreach ($query->result() as $row) {
-  		  $data[$row->key] = $row->data;
+  		  $data[$row->key] = $row->data; 
   		}
 
   		return $data;
