@@ -10,7 +10,7 @@
         	<div class="col-md-7">
             <h1><span style="color: #CC3204">Luxury Puppy Hotel!</span></h1>
             <h2><img src="img/5stars.jpg" style="width: 300px;"></h2>
-                  <p class="lead">Your pup will be in an indoor / outdoor sleeping area. The area is heated and we offer blankets, bedding and bowls. We do, however, ask you to supply your own food so he or she doesn't get a belly ache.</p>
+                  <p class="lead"><?php echo $cms_spots['about_top']; ?></p>
                   <p><a class="btn btn-lg btn-success" href="/reservation.html">Make a Reservation Today!</a></p>
           </div>
         </div>        

@@ -16,7 +16,7 @@
         	<div class="col-md-7">
         		<h1><span style="color: #CC3204">Double Hydrant</span></h1>
             <h2><i><span style="color: #CC3204;">Bed & Biscuits</span></i></h2>
-        	        <p class="lead">With 19 puppy vacation homes, a 2,800Sq/ft play area and the friendly, dog loving staff here at <b>Double Hydrant</b>, your pet is sure to "dig" their stay!</p>
+        	        <p class="lead"><?php echo $cms_spots['homepage_top']; ?></p>
         	        <p><a class="btn btn-lg btn-success" href="/reservation.html">Make a Reservation Today!</a></p>
         	</div>
         </div>         
@@ -64,7 +64,7 @@
         </div>
         <div class="col-md-5">
           <h1><span style="color: #CC3204">Stay!</span></h1>
-          <p>Your pup will be in an indoor / outdoor sleeping area. The area is heated and we offer blankets, bedding and bowls. We do, however, ask you to supply your own food so he or she doesn't get a belly ache.</p>
+          <p><?php echo $cms_spots['first_selling_point']; ?></p>
           <p><a class="btn btn-primary" href="/aboutus.html">Learn More &raquo;</a></p>
         </div>
         <div class="col-md-4">
@@ -83,7 +83,7 @@
         </div>
         <div class="col-md-5">
           <h1>Play!</h1>
-          <p>We just recently put in a 105ft X 56ft outdoor play area for your pets stay! We have been adding competition quality agility equipment and will continue to do so each month. It's really like a big play ground for pets!</p>
+          <p><?php echo $cms_spots['second_selling_point']; ?></p>
           <p><a class="btn btn-primary" href="/play.html">Learn More &raquo;</a></p>
         </div>
         <div class="col-md-1">
@@ -96,7 +96,7 @@
         </div>
         <div class="col-md-5">
           <h1>Enjoy!</h1>
-          <p>With our compeitive prices, friendly attitude and loving nature, your pet won't be the only one enjoying their visit. One of the first things you will notice is that we absolutely love dogs! Your pup will be loved and cared for by our professionally trained staff!</p>
+          <p><?php echo $cms_spots['third_selling_point']; ?></p>
           <p><a class="btn btn-primary" href="/reservation.html">Reserve a room &raquo;</a></p>
         </div>
         <div class="col-md-4">

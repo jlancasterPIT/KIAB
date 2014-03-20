@@ -6,11 +6,12 @@ class Homepage extends CI_Controller {
 	{
 		$page = "index";
 
-		$this->load->library('loadclientconfig');
 		$this->load->library('cmsspotsintegration');
-
 		$data['cms_spots'] = $this->cmsspotsintegration->loadCmsSpots('homepage');
+
+		$this->load->library('loadclientconfig');
 		$data['clientConfig'] = $this->loadclientconfig->loadConfig();
+		
 		$data['page'] = $page;
 
 		$data['clientTestimonials'] = $this->db->get('clientTestimonials');
