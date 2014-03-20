@@ -173,7 +173,7 @@ class Admin extends CI_Controller {
 		}	
 	}
 
-	public function clienttest() {
+	public function cmsspots() {
 		$loggedIn = $this->session->userdata('loggedIn');
 
 		if($loggedIn) {

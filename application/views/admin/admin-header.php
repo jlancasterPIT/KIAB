@@ -128,7 +128,7 @@
               <li><a href="/admin/companydetails.html">Company Details</a></li>
               <li><a href="/admin/clienttest.html">Client Testimonials</a></li>
               <li><a href="/admin/imagerotater.html">Homepage Image Rotation</a></li>
-              <li><a href="/admin/cms_spots.html">Modify CMS Spots</a></li>
+              <li><a href="/admin/cmsspots.html">Modify CMS Spots</a></li>
               <!--<li><a href="/forms.html">Form Styles</a></li>
               <li><a href="/jqueryui.html">jQuery UI</a></li>
               <li><a href="/charts.html">Charts</a></li>
