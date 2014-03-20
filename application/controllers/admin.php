@@ -173,6 +173,29 @@ class Admin extends CI_Controller {
 		}	
 	}
 
+	public function clienttest() {
+		$loggedIn = $this->session->userdata('loggedIn');
+
+		if($loggedIn) {
+			$data = array(
+					'username' => $this->session->userdata('username'),
+					'mycontent' => 'active',
+					'homeActive' => ''
+					);
+
+			
+			$this->load->library('loadclientconfig');
+
+			$data['clientConfig'] = $this->loadclientconfig->loadConfig();
+
+			$data['clientTestimonials'] = $this->db->get('clientTestimonials');
+
+			$this->load->view('admin/admin-header.php', $data);
+			$this->load->view('admin/cms_spots.php', $data);
+			$this->load->view('admin/admin-footer.html');
+		}	
+	}
+
 	public function addclient() {
 		$this->load->helper('url');
 		$this->load->database();
