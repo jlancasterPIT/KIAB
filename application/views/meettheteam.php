@@ -2,9 +2,7 @@
       <div class="jumbotron">
         <div class="row">
           <div class="col-md-4">
-            <p style="font-size: 16px;" align="left">Special Thanks to our friend Jim Valley for the best sign ever!<br /><br />
-          Jim Valley, Owner of Acorn Signworks, has been designing and hand-crafting distinctive signs in our area since 2002. A second-generation sign artist, Jim has decades of experience with all types of signage, from banners and vehicle graphics to dimensional and electric signs. He has enjoyed working with hundreds of local entrepreneurs in the last decade to help create unique, professional images for their businesses.<br /><br />
-          Signs are the most cost-effective form of advertising available, on the job 24 hours a day. A top-quality sign from Acorn Signworks is an investment that will help your business grow.....remember, Acorn Signs Work!</p>
+            <p style="font-size: 16px;" align="left"><?php echo $cms_spots['meetteam_top']; ?></p>
           </div>
         	<div class="col-md-8">
         		<img src="img/meettheteam_main.jpg" style="width: 100%" />

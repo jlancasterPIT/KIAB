@@ -5,6 +5,7 @@ class Homepage extends CI_Controller {
 	public function index()
 	{
 		$page = "index";
+		$data['page'] = $page;
 
 		$this->load->library('cmsspotsintegration');
 		$data['cms_spots'] = $this->cmsspotsintegration->loadCmsSpots('homepage');
@@ -12,8 +13,6 @@ class Homepage extends CI_Controller {
 		$this->load->library('loadclientconfig');
 		$data['clientConfig'] = $this->loadclientconfig->loadConfig();
 		
-		$data['page'] = $page;
-
 		$data['clientTestimonials'] = $this->db->get('clientTestimonials');
 		$data['imgRotater'] = $this->db->get('clientImgRotater');
 
