@@ -1,0 +1,51 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#example').dataTable( {
+        "bPaginate": false,
+        "bLengthChange": true,
+        "bFilter": true,
+        "bSort": false,
+        "bInfo": true,
+        "bAutoWidth": true
+    } );
+} );
+</script>
+<div class="main">
+
+    <div class="container">
+
+      <div class="row">
+
+      	<div class="col-md-12">
+
+      		<div class="widget stacked">
+
+      			<div class="widget-header">
+					<i class="icon-tasks"></i>
+					<h3>Year To Date Earnings</h3>
+				</div> <!-- /.widget-header -->
+
+				<div class="widget-content">
+					<table cellpadding="0" cellspacing="0" border="0" class="display dataTable" id="example" width="100%">
+						<thead>
+        					<tr><th>Month</th><th>Number of Reservation Days</th><th>Total ($)</th></tr>
+    					</thead>			
+						<?php
+						foreach($monthTotals as $month => $values) {
+							echo "<tr><td>".$month."</td><td>".$values['days']."</td><td>$".number_format($values['total'],2)."</td></tr>";
+						}
+						?>
+					</table>
+				</div> <!-- /.widget-content -->
+
+
+      		</div> <!-- /.widget -->
+
+      	</div> <!-- /.col-md-12 -->
+
+
+      </div> <!-- /.row -->
+
+    </div> <!-- /container -->
+    
+</div> <!-- /main -->

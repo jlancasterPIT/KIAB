@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Double Hydrant :: Admin</title>
+    <title><?php echo $title; ?> :: Admin</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">    
@@ -22,16 +22,24 @@
 
     <link href="/css/custom.css" rel="stylesheet">
 
+    <link href="/css/jquery.dataTables.css" rel="stylesheet">
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.print.css" rel="stylesheet">
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.file-input.js"></script>
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js"></script>
+    
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <script type="javascript">
       $( document ).ready(function() {
-        $('input[type=file]').bootstrapFileInput();
+        $('input[type=file]').bootstrapFileInput();        
       });
     </script>
   </head>
@@ -47,7 +55,7 @@
       <span class="sr-only">Toggle navigation</span>
       <i class="icon-cog"></i>
     </button>
-    <a class="navbar-brand" href="/index.html">Double Hydrant - Admin</a>
+    <a class="navbar-brand" href="/index.html"><?php echo $title; ?> - Admin</a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
@@ -71,18 +79,11 @@
 
     <li class="dropdown">
             
-      <a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
+      <a href="javscript:;">
         <i class="icon-user"></i> 
-        <?php echo $username; ?>
-        <b class="caret"></b>
+        <?php echo $username; ?>        
       </a>
-      
-      <ul class="dropdown-menu">
-        <li><a href="javascript:;">My Profile</a></li>
-        <li class="divider"></li>
-        <li><a href="/admin/logout/">Logout</a></li>
-      </ul>
-      
+            
     </li>
     </ul>
     
@@ -134,6 +135,34 @@
               <li><a href="/charts.html">Charts</a></li>
               <li><a href="/popups.html">Popups/Notifications</a></li>-->
             </ul>         
+          </li>
+
+          <li class="dropdown <?php echo $reporting; ?>">         
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="icon-bar-chart"></i>
+              <span>Your Reports</span>
+              <b class="caret"></b>
+            </a>
+          
+            <ul class="dropdown-menu">
+              <li><a href="/admin/ownerlookup.html">Owner (Client) Lookup</a></li>
+              <li><a href="/admin/doglookup.html">Dog Lookup</a></li>
+              <li><a href="/admin/revenuereports.html">Revenue Report</a></li>
+            </ul>         
+          </li>
+
+          <li class="<?php echo $kennelKamActive; ?>">
+            <a href="/admin/kennelkam.html">
+              <i class="icon-camera"></i>
+              <span>KennelKam</span>
+            </a>
+          </li>
+
+          <li class="<?php echo $faqActive; ?>">         
+            <a href="/admin/faq">
+              <i class="icon-question"></i>
+              <span>FAQ</span>
+            </a>
           </li>
           
           <!--

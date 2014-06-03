@@ -14,6 +14,13 @@
         }
       </script>
 
+      <style>
+      .error {
+        color: red;
+        font-weight: bold;
+      }
+      </style>
+
       <!-- Jumbotron -->
       <div class="jumbotron">
         <div class="row">
@@ -28,13 +35,16 @@
       	        <p class="lead">Please fill out the form below to reserve a room for your pet!</p>
                 <div class="row" style="font-size: 16px;" align="left">
                   <div class="col-md-12">
-                    <form role="form" action="/reservation.html" method="post" enctype="multipart/form-data">
+
+                    <?php echo form_open_multipart('reservation'); ?>
+
                       <div id="step1" style="display: block;">
                         <div class="form-group">
                           <label for="datetimepicker">Drop Off Date:</label>
+                          <?php echo form_error('dropoff'); ?>
                           <div id="datetimepicker" class="input-append date">
                             <div class="col-md-3">
-                              <input name="dropoff" class="form-control input-sm" type="text"></input>
+                              <input name="dropoff" class="form-control input-sm" type="text" readonly value="<?php echo set_value('dropoff'); ?>"></input>
                             </div>
                             <span class="add-on">
                             <span class="glyphicon glyphicon-calendar"></span>
@@ -43,9 +53,10 @@
                         </div>
                         <div class="form-group">
                           <label for="datetimepicker2">Pick Up Date:</label>
+                          <?php echo form_error('pickup'); ?>
                           <div id="datetimepicker2"  class="input-append date">
                             <div class="col-md-3">
-                            <input name="pickup" class="form-control input-sm" type="text"></input>
+                            <input name="pickup" class="form-control input-sm" type="text" readonly value="<?php echo set_value('pickup'); ?>"></input>
                             </div>
                             <span class="add-on">
                             <span class="glyphicon glyphicon-calendar"></span>
@@ -71,50 +82,51 @@
                           <input type="file" name="file" id="file" />
                           <p class="help-block">Please scan your vaccine record and upload it.</p>
                         </div>
-                        <button class="btn btn-info" onclick="$('#step1').hide();$('#step2').show();return false;">Next -></button>
                       </div> <!-- End Step 1 -->
-                      <div id="step2" style="display: none;">
+                      <div id="step2">
                         <div class="form-group">
                           <label>Dog(s) Name</label>
-                          <input type="text" name="dogName" class="form-control"/>
+                          <?php echo form_error('dogName'); ?>
+                          <input type="text" name="dogName" class="form-control" value="<?php echo set_value('dogName'); ?>"/>
                         </div>
                         <div class="form-group">
                           <label>Age(s)</label>
-                          <input type="text" name="dogAge" class="form-control"/>
+                          <?php echo form_error('dogAge'); ?>
+                          <input type="text" name="dogAge" class="form-control" value="<?php echo set_value('dogAge'); ?>"/>
                         </div>
                         <div class="form-group">
                           <label>Breed(s)</label>
-                          <input type="text" name="dogBreed" class="form-control"/>
+                          <?php echo form_error('dogBreed'); ?>
+                          <input type="text" name="dogBreed" class="form-control" value="<?php echo set_value('dogBreed'); ?>"/>
                         </div>
-                        <button class="btn btn-info" onclick="$('#step2').hide();$('#step3').show();return false;">Next -></button>
                       </div><!-- end step 2 -->
-                      <div id="step3" style="display: none;">
+                      <div id="step3">
                         <div class="form-group">
                           <label>Allergies</label>
                           <div id="allergies">
                             <label>List of Allergies</label><br />
-                            <input type="text" name="allergyText" class="form-control" />
+                            <input type="text" name="allergyText" class="form-control" value="<?php echo set_value('allergyText'); ?>"/>
                           </div>
                         </div>
                         <div class="form-group">
                           <label>Medications</label>
                           <div id="medications">
                             <label>What kind and how often?</label><br />
-                            <input type="text" name="medicationText" class="form-control" />
+                            <input type="text" name="medicationText" class="form-control" value="<?php echo set_value('medicationText'); ?>"/>
                           </div>
                         </div>
                         <div class="form-group">
                           <label>Flea Treatment</label>
                           <div id="flea">
                             <label>What brand and how often?</label><br />
-                            <input type="text" name="fleaText" class="form-control" />
+                            <input type="text" name="fleaText" class="form-control" value="<?php echo set_value('fleaText'); ?>"/>
                           </div>
                         </div>
                         <div class="form-group">
                           <label>Feeding Requirements</label>
                           <div id="food">
                             <label>How much and how often?</label><br />
-                            <input type="text" name="foodText" class="form-control" />
+                            <input type="text" name="foodText" class="form-control" value="<?php echo set_value('foodText'); ?>"/>
                           </div>
                         </div>
                         <div class="form-group">
@@ -123,21 +135,23 @@
                           <input type="checkbox" name="walks" value="walks" />Walks?<br />
                           <input type="checkbox" name="dogparks" value="dogpark" />Dog Park?<br /> 
                           <input type="checkbox" name="playtime" value="playTime" />Play Time?<br />
-                        </div>
-                        <button class="btn btn-info" onclick="$('#step3').hide();$('#step4').show();return false;">Next -></button>
+                        </div>                        
                       </div><!-- end step 3 -->
-                      <div id="step4" style="display: none;">
+                      <div id="step4">
                         <div class="form-group">
                           <label>Your Name</label><br />
-                          <input type="text" name="yourName" class="form-control">
+                          <?php echo form_error('yourName'); ?>
+                          <input type="text" name="yourName" class="form-control" value="<?php echo set_value('yourName'); ?>">
                         </div>
                         <div class="form-group">
                           <label>Your Phone Number</label><br />
-                          <input type="text" name="yourPhone" class="form-control">
+                          <?php echo form_error('yourPhone'); ?>
+                          <input type="text" name="yourPhone" class="form-control" value="<?php echo set_value('yourPhone'); ?>">
                         </div>
                         <div class="form-group">
                           <label>Your Email Address</label><br />
-                          <input type="text" name="yourEmail" class="form-control">
+                          <?php echo form_error('yourEmail'); ?>
+                          <input type="text" name="yourEmail" class="form-control" value="<?php echo set_value('yourEmail'); ?>">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                       </div>

@@ -24,11 +24,13 @@ $(function () {
 
 	// setup plot
 	var options = {
-		yaxis: { min: 0, max: 100 },
-		xaxis: { min: 0, max: 100 },
+		label: 'Test',
+		yaxis: { min: 0, max: 100},
+		xaxis: { min: 0, max: 100},
 		colors: ["#F90", "#222", "#666", "#BBB"],
 		series: {
 				   lines: { 
+
 						lineWidth: 2, 
 						fill: true,
 						fillColor: { colors: [ { opacity: 0.6 }, { opacity: 0.2 } ] },

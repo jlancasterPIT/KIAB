@@ -5,12 +5,66 @@ class Reservation extends CI_Controller {
 	public function index()
 	{
 		$page = "reservation";
+
+		$this->load->library('form_validation');
 		$this->load->library('loadclientconfig');
 		$data['clientConfig'] = $this->loadclientconfig->loadConfig();
 		$data['page'] = $page;
+
+		$this->load->helper(array('form', 'url'));
+
 		$this->load->view('header.php', $data);
+
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+
+		$config = array(
+               array(
+                     'field'   => 'dropoff', 
+                     'label'   => 'Please use the calender to select a drop off date.', 
+                     'rules'   => 'required'
+                  ),
+               array(
+                     'field'   => 'pickup', 
+                     'label'   => 'Please use the calender to select a pick up date.', 
+                     'rules'   => 'required'
+                  ),
+               array(
+                     'field'   => 'dogName', 
+                     'label'   => 'Please enter your dog\'s name.', 
+                     'rules'   => 'required'
+                  ),
+                array(
+                     'field'   => 'dogAge', 
+                     'label'   => 'Please enter your dog\'s age.', 
+                     'rules'   => 'required'
+                  ),
+                array(
+                     'field'   => 'dogBreed', 
+                     'label'   => 'Please enter your dog\'s breed.', 
+                     'rules'   => 'required'
+                  ),
+                array(
+                     'field'   => 'yourName', 
+                     'label'   => 'Please enter your name.', 
+                     'rules'   => 'required'
+                  ),
+                array(
+                     'field'   => 'yourPhone', 
+                     'label'   => 'Please enter your phone number.', 
+                     'rules'   => 'required'
+                  ),
+                array(
+                     'field'   => 'yourEmail', 
+                     'label'   => 'Please enter your email address.', 
+                     'rules'   => 'required'
+                  )
+            );
+
+		$this->form_validation->set_rules($config);
 		
-		if(isset($_POST['dropoff'])) {
+		if(isset($_POST['dropoff']) && $this->form_validation->run() != FALSE) {
+			$this->load->library('reservationsintegration');
+			//var_dump($this->reservationsintegration->checkReservationDaysForSpace($_POST['dropoff'], $_POST['pickup']));die();
 			$hasTreats   = "0";
 			$hasWalks    = "0";
 			$hasDogPark  = "0";
@@ -39,7 +93,7 @@ class Reservation extends CI_Controller {
 				if (in_array($extension, $allowedExts))
 				{
 					$filename = md5($_POST['dogName'].time()).".".$extension;
-					move_uploaded_file($_FILES["file"]["tmp_name"], "/var/sites/doublehydrant/uploads/".$filename);
+					move_uploaded_file($_FILES["file"]["tmp_name"], $_SERVER['DOCUMENT_ROOT']."/uploads/".$filename);
 				}
 			}
 
@@ -71,15 +125,17 @@ class Reservation extends CI_Controller {
 	         	'clientEmail' => $_POST['yourEmail']
 			);
 
-			$this->load->library('reservationsintegration');
-			$this->reservationsintegration->createReservation($reservationArray);
-
+			$madeReservation = $this->reservationsintegration->createReservation($reservationArray);
 			$data['reservationArray'] = $reservationArray;
-			$this->load->view('confirm_reservation.php', $data);
+			if($madeReservation) {				
+				$this->load->view('confirm_reservation.php', $data);
+			} else {
+				$this->load->view('overbooked_reservation.php', $data);
+			}
 		} else {
 			$this->load->view('reservation_new.php', $data);
 		}
-		
+
 		$this->load->view('footer.php', $data);
 	}
 }

@@ -21,7 +21,7 @@
 						<div class="form-group">
 							<label class="col-md-4">Title</label>
 							<div class="col-md-8">
-								<input type="text" name="title" value="<?php echo $clientConfig['title'];?>" class="form-control" />
+								<input class="form-control ui-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="Add some form of your targeted keywords in the title, preferably as one of the first words in the title. This is helpful for SEO, we recommend titles such as Dog Boarding Your Town | Company Name or Dog Kennel Your Town | Company Name" type="text" name="title" value="<?php echo $clientConfig['title'];?>" />
 							</div>
 						</div> <!-- /.form-group -->
 
@@ -71,6 +71,13 @@
 							<label class="col-md-4">Company Email</label>
 							<div class="col-md-8">
 								<input type="text" name="company_email" value="<?php echo $clientConfig['company_email']; ?>" class="form-control" />
+							</div>
+						</div> <!-- /.form-group -->
+
+						<div class="form-group">
+							<label class="col-md-4">Number of Runs</label>
+							<div class="col-md-8">
+								<input type="text" name="number_of_runs" value="<?php echo $clientConfig['number_of_runs']; ?>" class="form-control" />
 							</div>
 						</div> <!-- /.form-group -->
 

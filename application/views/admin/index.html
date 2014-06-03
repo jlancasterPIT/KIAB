@@ -58,57 +58,83 @@
 						
 				<div class="widget-header">
 					<i class="icon-list-alt"></i>
-					<h3>Recent News from Jeremy Lancaster Consulting</h3>
+					<h3>Reservation Calendar</h3>
 				</div> <!-- /widget-header -->
 				
 				<div class="widget-content">
+
+					<script type='text/javascript'>
+
+				      $(document).ready(function() {
+				        $('#calendar').fullCalendar({
+				          header: {
+				            left: 'prev,next today',
+				            center: 'title',
+				            right: 'month,agendaWeek,agendaDay'				            
+				          },
+				          editable: true,
+				          events: [
+				          <?php 
+				          	
+				          	foreach($reservations as $reservation) {				          		
+				          		echo "
+					            {
+					              title: '".$reservation->dogName." - Drop Off',
+					              start: new Date('".$reservation->dropOffDate."'),
+					              url: '/admin/viewreservation.html?id=".$reservation->id."'
+					            },";
+				        	}
+				        	$i = 0;
+				          	foreach($reservations as $reservation) {
+				          		echo "
+					            {
+					              title: '".$reservation->dogName." - Pick Up',
+					              start: new Date('".$reservation->pickUpDate."'),
+					              url: '/admin/viewreservation.html?id=".$reservation->id."'
+					            }";
+					            $i++;
+					            if(count($reservations) > $i) {
+					            	echo ",";
+					            }
+				        	}
+				          ?>
+				          ]
+				        });
+				        
+				      });
+
+				      </script>
 					
-					<ul class="news-items">
-						<li>
-							
-							<div class="news-item-detail">										
-								<a href="javascript:;" class="news-item-title">Coming Soon</a>
-								<p class="news-item-preview">This section will contain news and updates coming from Jeremy Lancaster Consulting so you can stay up to date with whos updating your site!</p>
-							</div>
-							
-							<div class="news-item-date">
-								<span class="news-item-day"><?php echo date("d"); ?></span>
-								<span class="news-item-month"><?php echo date("M"); ?></span>
-							</div>
-						</li>
-					</ul>
+					<div id="calendar" style='margin:1em 1em;font-size:13px'></div>
 					
 				</div> <!-- /widget-content -->
 			
 			</div> <!-- /widget -->	
 					
 										
-			<!-- <div class="widget stacked">
+			<div class="widget stacked">
 				
 				<div class="widget-header">
 					<i class="icon-file"></i>
-					<h3>Content</h3>
+					<h3>Personal Message from Jeremy Lancaster, Owner of KennelKonnect</h3>
 				</div>
 				
 				<div class="widget-content">
 					
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-					
-					
-					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>					
+					<p>Thank you for signing up and giving us the chance to earn your business! We are sure you are going to love the experience that KennelKonnect is, if you have any suggestions or feedback please feel free to contact me personally at <a href="mailto:j.lancaster@kennelkonnect.com">j.lancaster@kennelkonnect.com</a></p>
+
+					<p><B>THANK YOU AGAIN!</b></p>
+					<p>Jeremy Lancaster</p>
 					
 				</div>
 			
-			</div> --><!-- /widget -->
+			</div><!-- /widget -->
       		
 	    </div> <!-- /span6 -->
       	
       	
       	<div class="col-md-6">	
       		
-      		<!--
       		<div class="widget stacked">
 					
 				<div class="widget-header">
@@ -119,66 +145,87 @@
 				<div class="widget-content">
 					
 					<div class="shortcuts">
-						<a href="javascript:;" class="shortcut">
-							<i class="shortcut-icon icon-list-alt"></i>
-							<span class="shortcut-label">Apps</span>
-						</a>
-						
-						<a href="javascript:;" class="shortcut">
-							<i class="shortcut-icon icon-bookmark"></i>
-							<span class="shortcut-label">Bookmarks</span>								
-						</a>
-						
-						<a href="javascript:;" class="shortcut">
+						<a href="/admin/revenuereports.html" class="shortcut">
 							<i class="shortcut-icon icon-signal"></i>
-							<span class="shortcut-label">Reports</span>	
+							<span class="shortcut-label">Rev. Report</span>	
 						</a>
 						
-						<a href="javascript:;" class="shortcut">
+						<a href="javascript:;" onclick="alert('This has been disabled for the demo!');" class="shortcut">
 							<i class="shortcut-icon icon-comment"></i>
-							<span class="shortcut-label">Comments</span>								
+							<span class="shortcut-label">Community</span>								
 						</a>
 						
-						<a href="javascript:;" class="shortcut">
+						<a href="/admin/ownerlookup.html" class="shortcut">
 							<i class="shortcut-icon icon-user"></i>
-							<span class="shortcut-label">Users</span>
+							<span class="shortcut-label">Clients</span>
 						</a>
-						
-						<a href="javascript:;" class="shortcut">
+
+						<a href="/admin/kennelkam.html" class="shortcut">
+							<i class="shortcut-icon icon-camera"></i>
+							<span class="shortcut-label">KennelKam</span>
+						</a>
+												
+						<!-- <a href="javascript:;" class="shortcut">
 							<i class="shortcut-icon icon-file"></i>
-							<span class="shortcut-label">Notes</span>	
-						</a>
-						
-						<a href="javascript:;" class="shortcut">
-							<i class="shortcut-icon icon-picture"></i>
-							<span class="shortcut-label">Photos</span>	
-						</a>
-						
-						<a href="javascript:;" class="shortcut">
-							<i class="shortcut-icon icon-tag"></i>
-							<span class="shortcut-label">Tags</span>
-						</a>				
+							<span class="shortcut-label">eBooks</span>	
+						</a> -->
 					</div>
 				
 				</div>
 				
-			</div> --><!-- /widget -->
+			</div><!-- /widget -->
       		
       		
 					
 					
-			<!-- <div class="widget stacked">
+			<div class="widget stacked">
 					
 				<div class="widget-header">
 					<i class="icon-signal"></i>
-					<h3>Chart</h3>
+					<h3>Visual Kennel Manager</h3>
 				</div> 
 				
-				<div class="widget-content">					
-					<div id="area-chart" class="chart-holder"></div>					
+				<div class="widget-content">
+					<center><b>Use the table below to see how full, or empty, your kennel is today!</b></center><br>
+					<style>
+					td {
+						text-align:center; 
+	    				vertical-align:middle;
+    				}
+    				</style>
+					<!-- <div id="area-chart" class="chart-holder"></div> -->
+					<p style='float: left;'><img src='/img/green-check.png'> - has a dog or dogs in it!</p><p style='float: right;'><img src='/img/red-x.png'> - does not have a dog or dogs in it!</p><br />
+					<table width="100%" border="1">
+						<?php
+							$numberOfRuns = $clientConfig['number_of_runs'];
+							list($total, $remainder) = explode(".", $number);
+						?>
+						<tr>
+							<?php 
+							$d=0;
+							$setBreak = false;
+							$remainingRuns = $numberOfReservationsToday;
+							for($i=0; $i<$numberOfRuns; $i++) {
+								if($d == 10) {
+									echo "</tr><tr>";
+									$d = 0;
+								}
+								if($remainingRuns == 0) {
+									echo "<td id='$i' style='height: 120px;'><img src='/img/red-x.png'></td>";
+								} else {
+									echo "<td id='$i' style='height: 120px;'><img src='/img/green-check.png'></td>";
+									$remainingRuns--;
+								}
+								
+								$d++;
+							}
+							?>
+						</tr>
+					</table>
+					<p style="font-weight: bold; float: right;">Current Kennel Efficiency: <?php echo ($numberOfReservationsToday/$numberOfRuns)*100; ?>%</p>
 				</div> 
 			
-			</div> --><!-- /widget -->
+			</div> <!-- /widget -->
 					
 					
 					
@@ -208,7 +255,7 @@
 								<td><?php echo $reservation->dogName; ?></td>
 								<td><?php echo $reservation->dropOffDate; ?></td>
 								<td class="td-actions">
-									<a target="_blank" href="<?php echo str_replace('/var/sites/doublehydrant', '', $reservation->pdfLink); ?>" class="btn btn-xs btn-primary">
+									<a href="/admin/viewreservation.html?id=<?php echo $reservation->id; ?>" class="btn btn-xs btn-primary">
 										<i class="btn-icon-only icon-ok"></i><br />
 										View Reservation
 									</a>

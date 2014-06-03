@@ -58,7 +58,7 @@
 						<tbody>
 						<?php foreach($clientTestimonials->result() as $clientT) {
 							echo "<tr>";
-							echo "<td>".$clientT->name."</td><td>".$clientT->text."</td><td><a href='/admin/deleteclient?id=".$clientT->id."'><img height='45px;' src='/img/delete.png' /></a></td>";
+							echo "<td>".$clientT->name."</td><td>".$clientT->text."</td><td><a href='/admin/deleteclient?id=".$clientT->id."'><i class='icon-remove'></i></a></td>";
 							echo "</tr>";
 						} ?>
 						</tbody>
