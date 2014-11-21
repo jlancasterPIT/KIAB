@@ -13,7 +13,7 @@ class Reservation extends CI_Controller {
 
 		$this->load->helper(array('form', 'url'));
 
-		$this->load->view('header.php', $data);
+		$this->load->view($data['clientConfig']['domain'].'/header.php', $data);
 
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 
@@ -128,14 +128,14 @@ class Reservation extends CI_Controller {
 			$madeReservation = $this->reservationsintegration->createReservation($reservationArray);
 			$data['reservationArray'] = $reservationArray;
 			if($madeReservation) {				
-				$this->load->view('confirm_reservation.php', $data);
+				$this->load->view($data['clientConfig']['domain'].'/confirm_reservation.php', $data);
 			} else {
-				$this->load->view('overbooked_reservation.php', $data);
+				$this->load->view($data['clientConfig']['domain'].'/overbooked_reservation.php', $data);
 			}
 		} else {
-			$this->load->view('reservation_new.php', $data);
+			$this->load->view($data['clientConfig']['domain'].'/reservation_new.php', $data);
 		}
 
-		$this->load->view('footer.php', $data);
+		$this->load->view($data['clientConfig']['domain'].'/footer.php', $data);
 	}
 }

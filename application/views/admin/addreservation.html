@@ -1,0 +1,237 @@
+<div class="main">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="widget stacked">
+
+                    <div class="widget-header">
+                        <i class="icon-tasks"></i>
+                        <h3>Company Details</h3>
+                    </div> <!-- /.widget-header -->
+
+                    <div class="widget-content">
+                        <form role="form" class="form-horizontal col-md-7" method="POST">
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Drop Off Date:
+                                </label>
+                                <?php echo form_error('dropoff'); ?>
+
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input name="dropoff" placeholder="mm/dd/yyyy" class="form-control input-sm" type="text" value="<?php echo set_value('dropoff'); ?>"></input>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Pick Up Date:
+                                </label>
+                                <?php echo form_error('pickup'); ?>
+
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input name="pickup" placeholder="mm/dd/yyyy" class="form-control input-sm" type="text" value="<?php echo set_value('pickup'); ?>"></input>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Number of Dogs:
+                                </label>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <select name="numOfDogs" id="numOfDogs" class="form-control" onchange="numDogs();">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </select>
+                                                <span id="boardDog" style="display: none;">
+                                                    <label>Board dogs together? (MAX 2 PER RUN)</label>
+                                                    <input type="checkbox" name="boardTogether" />
+                                                </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Vaccine Record Upload
+                                </label>
+
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <p>Please inclue rabies, distemper and bordetella vaccinations</p>
+                                        <input type="file" name="file" id="file" />
+                                        <p class="help-block">Please scan your vaccine record and upload it.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Dog(s) Name
+                                </label>
+                                <?php echo form_error('dogName'); ?>
+
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input type="text" name="dogName" class="form-control" value="<?php echo set_value('dogName'); ?>"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Age(s)
+                                </label>
+                                <?php echo form_error('dogAge'); ?>
+
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input type="text" name="dogAge" class="form-control" value="<?php echo set_value('dogAge'); ?>"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Breeds(s)
+                                </label>
+                                <?php echo form_error('dogBreed'); ?>
+
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input type="text" name="dogBreed" class="form-control" value="<?php echo set_value('dogBreed'); ?>"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Allergies
+                                </label>
+
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <label>List of Allergies</label><br />
+                                        <input type="text" name="allergyText" class="form-control" value="<?php echo set_value('allergyText'); ?>"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Medications
+                                </label>
+
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <label>What Kinds of Medication and How often do they take them?</label><br />
+                                        <input type="text" name="medicationText" class="form-control" value="<?php echo set_value('medicationText'); ?>"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Flea Treatment
+                                </label>
+
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <label>What Brand and How often do they take them?</label><br />
+                                        <input type="text" name="fleaText" class="form-control" value="<?php echo set_value('fleaText'); ?>"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Feeding Requirements
+                                </label>
+
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <label>How much are they given with each meal and at what times are their meals?</label><br />
+                                        <input type="text" name="foodText" class="form-control" value="<?php echo set_value('foodText'); ?>"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Special Instructions
+                                </label>
+
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input type="checkbox" name="treats" value="treats" />Treats?<br />
+                                        <input type="checkbox" name="walks" value="walks" />Walks?<br />
+                                        <input type="checkbox" name="dogparks" value="dogpark" />Dog Park?<br />
+                                        <input type="checkbox" name="playtime" value="playTime" />Play Time?<br />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Client Name
+                                </label>
+                                <?php echo form_error('yourName'); ?>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input type="text" name="yourName" class="form-control" value="<?php echo set_value('yourName'); ?>">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Client Phone Number
+                                </label>
+                                <?php echo form_error('yourPhone'); ?>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input type="text" name="yourPhone" class="form-control" value="<?php echo set_value('yourPhone'); ?>">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Client Email
+                                </label>
+                                <?php echo form_error('yourEmail'); ?>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input type="text" name="yourEmail" class="form-control" value="<?php echo set_value('yourEmail'); ?>">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="submit" name="enter_reservation" class="form-control" value="Enter Reservation!">
+                        </form>
+
+
+                    </div> <!-- /.widget-content -->
+
+
+                </div> <!-- /.widget -->
+
+            </div> <!-- /.col-md-12 -->
+
+
+        </div> <!-- /.row -->
+
+    </div> <!-- /container -->
+
+</div> <!-- /main -->

@@ -14,7 +14,7 @@ date_default_timezone_set('America/New_York');
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://kiabdev.com/';
+$config['base_url']	= 'http://dev.admin.kennelkloud.com/';
 
 /*
 |--------------------------------------------------------------------------

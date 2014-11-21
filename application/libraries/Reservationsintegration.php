@@ -125,8 +125,36 @@
 			$CI->db->select('*');
 			$CI->db->from('reservations');
 			if($from != NULL && $to != NULL) {
-				$CI->db->where('dropOffDate BETWEEN "' . date("Y-m-d", strtotime($from)) . '" AND "' . date("Y-m-d", strtotime($to)) . '"');
+				$CI->db->where('dropOffDate BETWEEN "' . date("Y-m-d", strtotime($from)) . '" AND "' . date("Y-m-d", strtotime($to)) . '" OR pickUpDate BETWEEN "' . date("Y-m-d", strtotime($from)) . '" AND "' . date("Y-m-d", strtotime($to)) . '"');
 			}
+
+			$query = $CI->db->get();
+
+			return $query->result();
+		}
+
+		public function getTodaysDropOffs() {
+			$CI =& get_instance();
+            $CI->load->database();
+
+            // Fix this so that it works with the new reservation table
+			$CI->db->select('*');
+			$CI->db->from('reservations');
+			$CI->db->where('dropOffDate BETWEEN "' . date("Y-m-d", strtotime("today")) . '" AND "' . date("Y-m-d", strtotime("today")) . '"');
+
+			$query = $CI->db->get();
+
+			return $query->result();
+		}
+
+		public function getTodaysPickups() {
+			$CI =& get_instance();
+            $CI->load->database();
+
+            // Fix this so that it works with the new reservation table
+			$CI->db->select('*');
+			$CI->db->from('reservations');
+			$CI->db->where('pickUpDate BETWEEN "' . date("Y-m-d", strtotime("today")) . '" AND "' . date("Y-m-d", strtotime("today")) . '"');
 
 			$query = $CI->db->get();
 

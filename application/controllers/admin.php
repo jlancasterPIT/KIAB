@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-error_reporting(E_ERROR); 
+error_reporting(E_ALL); 
 
 class Admin extends CI_Controller {
 
@@ -104,52 +104,21 @@ class Admin extends CI_Controller {
 			$this->load->library('loadclientconfig');
 
 			$clientConfig = $this->loadclientconfig->loadConfig();
+			$todaysDropoffs = $this->reservationsintegration->getTodaysDropOffs();
+			$todaysPickups = $this->reservationsintegration->getTodaysPickups();
 
-			$start = date("Y-m-d", strtotime("first day of this year"));
-			$end   = date("Y-m-d", strtotime("first day of next year"));
-			$reservations = $this->reservationsintegration->getAllReservations($start, $end);
-
-			$grandTotal = 0;
-			$grandDays  = 0;
-
-			foreach ( $reservations as $reservation ) {
-				$numOfDays = $this->daysBetween($reservation->dropOffDate, $reservation->pickUpDate);
-				
-				if($reservation->boardTogether == '1' && $reservation->numOfDogs > 1) {
-					if($reservation->numOfDogs == '2') {
-						$cost = $numOfDays*$clientConfig['price_pernight_onerun'];
-					} else if($reservation->numOfDogs == '3') {
-						$cost = $numOfDays*$clientConfig['price_pernight_onerun'];
-						$ecost = $numOfDays*$clientConfig['price_pernight'];
-					} else if($reservation->numOfDogs == '4') {
-						$cost = $numOfDays*$clientConfig['price_pernight_onerun'];
-						$cost = $cost*2;
-					}
-				} else {
-					$cost = $numOfDays*$clientConfig['price_pernight'];
-				}
-				
-				$grandTotal += $cost;
-				$grandDays += $numOfDays;
-			}
-
-			$today = date("Y-m-d", strtotime("today"));			
-			$todaysReservations = $this->reservationsintegration->getAllReservations($today, $today);
+			$numberOfReservationsToday = count($todaysPickups)+count($todaysDropoffs);
 
 			$data = array(
 					'username' => $this->session->userdata('username'),
 					'title' => $clientConfig['title'],
 					'clientConfig' => $clientConfig,
-					'numberOfReservationsToday' => count($todaysReservations),
-					'reservationsThisMonth' => count($this->reservationsintegration->getAllReservations(date("Y")."-".date("m")."-01", date("Y-m-d", strtotime("last day of this month")))),
-					'reservationsThisYear' => count($reservations),
-					'revenueThisYear' => number_format($grandTotal, 2),
-					'revenueDays' => $grandDays,
+					'todaysDropoffs' => $todaysDropoffs,
+					'todaysPickups' => $todaysPickups,
+					'numberOfReservationsToday' => $numberOfReservationsToday,
 					'homeActive' => 'active',
 					'mycontent' => ''
 				);
-
-			$data['reservations'] = $reservations;
 			
 			$this->load->view('admin/admin-header.php', $data);
 			$this->load->view('admin/index.html');
@@ -456,6 +425,22 @@ class Admin extends CI_Controller {
 		$this->session->sess_destroy();
 		$this->load->helper('url');
 		redirect('/admin/login/', 'refresh');
+	}
+
+	public function lostpassword() {
+		// TODO Fill out this function and create a view for it
+	}
+
+	public function newsletter() {
+		echo "News Letter";
+	}
+
+	public function affiliate() {
+		echo "Affiliate";
+	}
+
+	public function reports() {
+		echo "Reports";
 	}
 
 }

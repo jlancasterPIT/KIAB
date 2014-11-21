@@ -11,43 +11,24 @@ $(document).ready(function() {
     } );
 } );
 </script>
-<div class="main">
+<div class="box altbox"><!-- .altbox for alternative box's color -->
+  <div class="boxin">
+    <div class="header">
+			<h3>Owner Lookup</h3>
+		</div> <!-- /.widget-header -->
 
-    <div class="container">
-
-      <div class="row">
-
-      	<div class="col-md-12">
-
-      		<div class="widget stacked">
-
-      			<div class="widget-header">
-					<i class="icon-tasks"></i>
-					<h3>Owner Lookup</h3>
-				</div> <!-- /.widget-header -->
-
-				<div class="widget-content">
-					<table cellpadding="0" cellspacing="0" border="0" class="display dataTable" id="example" width="100%">
-						<thead>
-        					<tr><th>Client Name</th><th>Client Phone Number</th><th>Client Email</th></tr>
-    					</thead>			
-						<?php
-						 //["clientName"]=> string(14) "Chelsea Medley" ["clientPhoneNumber"]=> string(14) "(724) 220-5788" ["clientEmail"]=> string(20) "chelseam33@yahoo.com"
-						foreach($reservations as $reservation) {
-							echo "<tr><td>".$reservation->clientName."</td><td>".$reservation->clientPhoneNumber."</td><td>".$reservation->clientEmail."</td></tr>";
-						}
-						?>
-					</table>
-				</div> <!-- /.widget-content -->
-
-
-      		</div> <!-- /.widget -->
-
-      	</div> <!-- /.col-md-12 -->
-
-
-      </div> <!-- /.row -->
-
-    </div> <!-- /container -->
-    
-</div> <!-- /main -->
+		<div class="content">
+			<table cellpadding="0" cellspacing="0" border="0" class="display dataTable" id="example" width="100%">
+				<thead>
+    					<tr><th>Client Name</th><th>Client Phone Number</th><th>Client Email</th><th></th></tr>
+					</thead>			
+				<?php
+				 //["clientName"]=> string(14) "Chelsea Medley" ["clientPhoneNumber"]=> string(14) "(724) 220-5788" ["clientEmail"]=> string(20) "chelseam33@yahoo.com"
+				foreach($reservations as $reservation) {
+					echo "<tr><td>".$reservation->clientName."</td><td>".$reservation->clientPhoneNumber."</td><td>".$reservation->clientEmail."</td><td><button class='button'>See Invoices</button></tr>";
+				}
+				?>
+			</table>
+		</div> <!-- /.widget-content -->
+  </div> <!-- /.widget -->
+</div> <!-- /.col-md-12 -->

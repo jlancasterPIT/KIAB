@@ -11,8 +11,8 @@ class Play extends CI_Controller {
 		$data['clientConfig'] = $this->loadclientconfig->loadConfig();
 		$data['page'] = $page;
 
-		$this->load->view('header.php', $data);
-		$this->load->view('play.php', $data);
-		$this->load->view('footer.php', $data);
+		$this->load->view($data['clientConfig']['domain'].'/header.php', $data);
+		$this->load->view($data['clientConfig']['domain'].'/play.php', $data);
+		$this->load->view($data['clientConfig']['domain'].'/footer.php', $data);
 	}
 }

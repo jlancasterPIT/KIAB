@@ -13,8 +13,8 @@ class Meettheteam extends CI_Controller {
 		$this->load->library('loadclientconfig');
 		$data['clientConfig'] = $this->loadclientconfig->loadConfig();
 		
-		$this->load->view('header.php', $data);
-		$this->load->view('meettheteam.php', $data);
-		$this->load->view('footer.php', $data);
+		$this->load->view($data['clientConfig']['domain'].'/header.php', $data);
+		$this->load->view($data['clientConfig']['domain'].'/meettheteam.php', $data);
+		$this->load->view($data['clientConfig']['domain'].'/footer.php', $data);
 	}
 }

@@ -8,16 +8,15 @@ class Homepage extends CI_Controller {
 		$data['page'] = $page;
 
 		$this->load->library('cmsspotsintegration');
-		$data['cms_spots'] = $this->cmsspotsintegration->loadCmsSpots('homepage');
-
 		$this->load->library('loadclientconfig');
+
+		$data['cms_spots'] = $this->cmsspotsintegration->loadCmsSpots('homepage');
 		$data['clientConfig'] = $this->loadclientconfig->loadConfig();
-		
 		$data['clientTestimonials'] = $this->db->get('clientTestimonials');
 		$data['imgRotater'] = $this->db->get('clientImgRotater');
 
-		$this->load->view('header.php', $data);
-		$this->load->view('homepage.php', $data);
-		$this->load->view('footer.php', $data);
+		$this->load->view($data['clientConfig']['domain'].'/header.php', $data);
+		$this->load->view($data['clientConfig']['domain'].'/homepage.php', $data);
+		$this->load->view($data['clientConfig']['domain'].'/footer.php', $data);
 	}
 }

@@ -1,216 +1,136 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title><?php echo $title; ?> :: Admin</title>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">    
-    
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
-    
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
-    <link href="/css/font-awesome.min.css" rel="stylesheet">        
-    
-    <link href="/css/ui-lightness/jquery-ui-1.10.0.custom.min.css" rel="stylesheet">
-    
-    <link href="/css/base-admin-3.css" rel="stylesheet">
-    <link href="/css/base-admin-3-responsive.css" rel="stylesheet">
-    
-    <link href="/css/pages/dashboard.css" rel="stylesheet">   
-
-    <link href="/css/custom.css" rel="stylesheet">
-
-    <link href="/css/jquery.dataTables.css" rel="stylesheet">
-
-    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css" rel="stylesheet">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.print.css" rel="stylesheet">
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.file-input.js"></script>
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js"></script>
-    
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
+    <head>
+  
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="content-style-type" content="text/css" />
+        <meta http-equiv="content-script-type" content="text/javascript" />
+        
+        <title>Dashboard · KennelKloud</title>
+        
+        <link rel="stylesheet" type="text/css" href="/css/orange.css" media="screen, projection, tv" /><!-- Change name of the stylesheet to change colors (blue/red/black/green/brown/orange/purple) -->
+        <!--[if lte IE 7.0]><link rel="stylesheet" type="text/css" href="/css/ie.css" media="screen, projection, tv" /><![endif]-->
+    <!--[if IE 8.0]>
+      <style type="text/css">
+        form.fields fieldset {margin-top: -10px;}
+      </style>
     <![endif]-->
-    <script type="javascript">
-      $( document ).ready(function() {
-        $('input[type=file]').bootstrapFileInput();        
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- Adding support for transparent PNGs in IE6: -->
+    <!--[if lte IE 6]>
+      <script type="text/javascript" src="js/ddpng.js"></script>
+      <script type="text/javascript">
+        DD_belatedPNG.fix('#nav #h-wrap .h-ico');
+        DD_belatedPNG.fix('.ico img');
+        DD_belatedPNG.fix('.msg p');
+        DD_belatedPNG.fix('table.calendar thead th.month a img');
+        DD_belatedPNG.fix('table.calendar tbody img');
+      </script>
+    <![endif]-->
+    <script type="text/javascript">
+      $(document).ready(function() {
+          // Search input text handling on focus
+          var $searchq = $("#search-q").attr("value");
+            $('#search-q.text').css('color', '#999');
+          $('#search-q').focus(function(){
+            if ( $(this).attr('value') == $searchq) {
+              $(this).css('color', '#555');
+              $(this).attr('value', '');
+            }
+          });
+          $('#search-q').blur(function(){
+            if ( $(this).attr('value') == '' ) {
+              $(this).attr('value', $searchq);
+              $(this).css('color', '#999');
+            }
+          });
+        // Switch categories
+          $('#h-wrap').hover(function(){
+              $(this).toggleClass('active');
+              $("#h-wrap ul").css('display', 'block');
+            }, function(){
+              $(this).toggleClass('active');
+              $("#h-wrap ul").css('display', 'none');
+          });
+        // Handling with tables (adding first and last classes for borders and adding alternate bgs)
+        $('tbody tr:even').addClass('even');
+          $('table.grid tbody tr:last-child').addClass('last');
+          $('tr th:first-child, tr td:first-child').addClass('first');
+          $('tr th:last-child, tr td:last-child').addClass('last');
+          $('form.fields fieldset:last-child').addClass('last');
+        // Handling with lists (alternate bgs)
+          $('ul.simple li:even').addClass('even');
+        // Handling with grid views (adding first and last classes for borders and adding alternate bgs)
+          $('.grid .line:even').addClass('even');
+          $('.grid .line:first-child').addClass('firstline');
+          $('.grid .line:last-child').addClass('lastline');
+        // Tabs switching
+          $('#box1 .content#box1-grid').hide(); // hide content related to inactive tab by default
+          $('#box1 .header ul a').click(function(){
+            $('#box1 .header ul a').removeClass('active');
+            $(this).addClass('active'); // make clicked tab active
+            $('#box1 .content').hide(); // hide all content
+            $('#box1').find('#' + $(this).attr('rel')).show(); // and show content related to clicked tab
+            return false;
+          });
       });
     </script>
-  </head>
-
-<body>
-
-<nav class="navbar navbar-inverse" role="navigation">
-
-  <div class="container">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <i class="icon-cog"></i>
-    </button>
-    <a class="navbar-brand" href="/index.html"><?php echo $title; ?> - Admin</a>
-  </div>
-
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav navbar-right">
-      <!-- <li class="dropdown">
-            
-      <a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
-        <i class="icon-cog"></i>
-        Settings
-        <b class="caret"></b>
-      </a>
-      
-      <ul class="dropdown-menu">
-        <li><a href="/account.html">Account Settings</a></li>
-        <li class="divider"></li>
-        <li><a href="javascript:;">Help</a></li>
-      </ul>
-      
-    </li>-->
-
-    <li class="dropdown">
-            
-      <a href="javscript:;">
-        <i class="icon-user"></i> 
-        <?php echo $username; ?>        
-      </a>
-            
-    </li>
-    </ul>
     
-    <!-- <form class="navbar-form navbar-right" role="search">
-      <div class="form-group">
-        <input type="text" class="form-control input-sm search-query" placeholder="Search">
-      </div>
-    </form>-->
-  </div><!-- /.navbar-collapse -->
-</div> <!-- /.container -->
-</nav>    
-<div class="subnavbar">
+    </head>
+    <body>
 
-  <div class="subnavbar-inner">
-  
-    <div class="container">
-      
-      <a href="javascript:;" class="subnav-toggle" data-toggle="collapse" data-target=".subnav-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <i class="icon-reorder"></i>
-          
-        </a>
-
-      <div class="collapse subnav-collapse">
-        <ul class="mainnav">
-        
-          <li class="<?php echo $homeActive; ?>">
-            <a href="/admin/">
-              <i class="icon-home"></i>
-              <span>Home</span>
-            </a>              
-          </li>
-          
-          
-          <li class="dropdown <?php echo $mycontent; ?>">         
-            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="icon-th"></i>
-              <span>Modify Content</span>
-              <b class="caret"></b>
-            </a>
-          
-            <ul class="dropdown-menu">
-              <li><a href="/admin/companydetails.html">Company Details</a></li>
-              <li><a href="/admin/clienttest.html">Client Testimonials</a></li>
-              <li><a href="/admin/imagerotater.html">Homepage Image Rotation</a></li>
-              <li><a href="/admin/cmsspots.html">Modify CMS Spots</a></li>
-              <!--<li><a href="/forms.html">Form Styles</a></li>
-              <li><a href="/jqueryui.html">jQuery UI</a></li>
-              <li><a href="/charts.html">Charts</a></li>
-              <li><a href="/popups.html">Popups/Notifications</a></li>-->
-            </ul>         
-          </li>
-
-          <li class="dropdown <?php echo $reporting; ?>">         
-            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="icon-bar-chart"></i>
-              <span>Your Reports</span>
-              <b class="caret"></b>
-            </a>
-          
-            <ul class="dropdown-menu">
-              <li><a href="/admin/ownerlookup.html">Owner (Client) Lookup</a></li>
-              <li><a href="/admin/doglookup.html">Dog Lookup</a></li>
-              <li><a href="/admin/revenuereports.html">Revenue Report</a></li>
-            </ul>         
-          </li>
-
-          <li class="<?php echo $kennelKamActive; ?>">
-            <a href="/admin/kennelkam.html">
-              <i class="icon-camera"></i>
-              <span>KennelKam</span>
-            </a>
-          </li>
-
-          <li class="<?php echo $faqActive; ?>">         
-            <a href="/admin/faq">
-              <i class="icon-question"></i>
-              <span>FAQ</span>
-            </a>
-          </li>
-          
-          <!--
-          <li class="dropdown">         
-            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="icon-copy"></i>
-              <span>Sample Pages</span>
-              <b class="caret"></b>
-            </a>      
-          
-            <ul class="dropdown-menu">
-              <li><a href="/pricing.html">Pricing Plans</a></li>
-              <li><a href="/faq.html">FAQ's</a></li>
-              <li><a href="/gallery.html">Gallery</a></li>
-              <li><a href="/reports.html">Reports</a></li>
-              <li><a href="/account.html">User Account</a></li>
-            </ul>         
-          </li>
-          
-          <li class="dropdown">         
-            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="icon-external-link"></i>
-              <span>Extra Pages</span>
-              <b class="caret"></b>
-            </a>  
-          
-            <ul class="dropdown-menu">
-              <li><a href="/login.html">Login</a></li>
-              <li><a href="/signup.html">Signup</a></li>
-              <li><a href="/error.html">Error</a></li>
-              <li class="dropdown-submenu">
-                  <a tabindex="-1" href="#">More options</a>
-                  <ul class="dropdown-menu">
-                    <li><a tabindex="-1" href="#">Second level</a></li>
-
-                    <li><a href="#">Second level</a></li>
-                    <li><a href="#">Second level</a></li>
-                  </ul>
-                </li>
-            </ul>           
-          </li>
-          -->
-        
-        </ul>
-      </div> <!-- /.subnav-collapse -->
-
-    </div> <!-- /container -->
-  
-  </div> <!-- /subnavbar-inner -->
-
-</div> <!-- /subnavbar -->
+    <div id="header">
+      <div class="inner-container clearfix">
+        <h1 id="logo">
+          <a class="home" href="#" title="Go to admin's homepage">
+            KennelKloud <!-- your title -->
+            <span class="ir"></span>
+          </a><br />
+          <a class="button" href="http://www.kennelkloud.com">visit site&nbsp;»</a>
+        </h1>
+        <div id="userbox">
+          <div class="inner">
+            <strong>Admin</strong>
+            <ul class="clearfix">
+              <!-- <li><a href="#">profile</a></li> -->
+              <li><a href="/admin/companydetails.html">settings</a></li>
+            </ul>
+          </div>
+          <a id="logout" href="/admin/logout">log out<span class="ir"></span></a>
+        </div><!-- #userbox -->
+      </div><!-- .inner-container -->
+    </div><!-- #header -->
+        <div id="nav">
+      <div class="inner-container clearfix">
+        <div id="h-wrap">
+          <div class="inner">
+            <h2>
+              <span class="h-ico ico-dashboard"><span>Dashboard</span></span>
+              <span class="h-arrow"></span>
+            </h2>
+            <ul class="clearfix">
+              <!-- Admin sections - feel free to add/modify your own icons are located in "/css/img/h-ico/*" -->
+              <li><a class="h-ico ico-edit" href="/admin/"><span>Homepage</span></a></li>
+              <!--<li><a class="h-ico ico-comments" href="/admin/cmsspots.html"><span>Edit Web Content</span></a></li>-->
+              <li><a class="h-ico ico-media" href="/admin/imagerotater.html"><span>Images</span></a></li>
+              <li><a class="h-ico ico-syndication" href="/admin/reports.html"><span>Reports</span></a></li>
+              <li><a class="h-ico ico-send" href="/admin/newsletter.html"><span>Newsletter</span></a></li>
+              <li><a class="h-ico ico-cash" href="/admin/affiliate.html"><span>Offers / Promos</span></a></li>
+              <li><a class="h-ico ico-color" href="/admin/cmsspots.html"><span>Appearance</span></a></li>
+              <li><a class="h-ico ico-users" href="/admin/ownerlookup.html"><span>Clients</span></a></li>
+              <li><a class="h-ico ico-advanced" href="/admin/companydetails.html"><span>Settings</span></a></li>
+            </ul>
+          </div>
+        </div><!-- #h-wrap -->
+        <form action="" method="post"><!-- Search form -->
+          <fieldset>
+            <label class="a-hidden" for="search-q">Search query:</label>
+            <input id="search-q" class="text fl" type="text" name="search-q" size="20" value="search&hellip;" />
+            <input class="hand fr" type="image" src="/css/img/search-button.png" alt="Search" />
+          </fieldset>
+        </form>
+      </div><!-- .inner-container -->
+        </div><!-- #nav -->
+    <div id="container">
+      <div class="inner-container">

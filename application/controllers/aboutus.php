@@ -13,8 +13,8 @@ class Aboutus extends CI_Controller {
 		$this->load->library('loadclientconfig');
 		$data['clientConfig'] = $this->loadclientconfig->loadConfig();
 
-		$this->load->view('header.php', $data);
-		$this->load->view('aboutus.php', $data);
-		$this->load->view('footer.php', $data);
+		$this->load->view($data['clientConfig']['domain'].'/header.php', $data);
+		$this->load->view($data['clientConfig']['domain'].'/aboutus.php', $data);
+		$this->load->view($data['clientConfig']['domain'].'/footer.php', $data);
 	}
 }

@@ -1,153 +1,101 @@
-<div class="main">
-
-    <div class="container">
-
-      <div class="row">
-
-      	<div class="col-md-12">
-
-      		<div class="widget stacked">
-
-      			<div class="widget-header">
-					<i class="icon-tasks"></i>
-					<h3>Company Details</h3>
-				</div> <!-- /.widget-header -->
-
-				<div class="widget-content">
-
-					<form action="/admin/updatecompany" role="form" class="form-horizontal col-md-7">
-
-
-						<div class="form-group">
+<div class="box altbox"><!-- .altbox for alternative box's color -->
+	<div class="boxin">
+		<div class="header">
+			<h3>Company Details</h3>
+		</div>
+		<div class="content">
+			<form action="/admin/updatecompany" class="basic">
+				<div class="inner-form">
+					<dl>
+						<dt>
 							<label class="col-md-4">Title</label>
-							<div class="col-md-8">
-								<input class="form-control ui-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="Add some form of your targeted keywords in the title, preferably as one of the first words in the title. This is helpful for SEO, we recommend titles such as Dog Boarding Your Town | Company Name or Dog Kennel Your Town | Company Name" type="text" name="title" value="<?php echo $clientConfig['title'];?>" />
-							</div>
-						</div> <!-- /.form-group -->
-
-						<div class="form-group">
+						</dt>
+						<dd>
+							<input class="txt" type="text" name="title" value="<?php echo $clientConfig['title'];?>" />
+						</dd>
+						<dt>
 							<label class="col-md-4">Hours</label>
-							<div class="col-md-8">
-								<input type="text" name="hours" value="<?php echo $clientConfig['hours'];?>" class="form-control" />
-							</div>
-						</div> <!-- /.form-group -->
-
-						<div class="form-group">
+						</dt>
+						<dd>
+							<input type="text" name="hours" value="<?php echo $clientConfig['hours'];?>" class="txt" />
+						</dd>
+						<dt>
 							<label class="col-md-4">Company Name</label>
-							<div class="col-md-8">
-								<input type="text" name="company_name" value="<?php echo $clientConfig['company_name']; ?>" class="form-control" />
-							</div>
-						</div> <!-- /.form-group -->
-
-						<div class="form-group">
+						</dt>
+						<dd>
+							<input type="text" name="company_name" value="<?php echo $clientConfig['company_name']; ?>" class="txt" />
+						</dd>
+						<dt>
 							<label class="col-md-4">Address</label>
-							<div class="col-md-8">
-								<textarea name="address" class="form-control" rows="3"><?php echo $clientConfig['address'];?></textarea>
-							</div>
-						</div> <!-- /.form-group -->
-
-						<div class="form-group">
+						</dt>
+						<dd>
+							<textarea name="address" class="txt" rows="3"><?php echo $clientConfig['address'];?></textarea>
+						</dd>
+						<dt>
 							<label class="col-md-4">Phone Number</label>
-							<div class="col-md-8">
-								<input type="text" name="phone_number" value="<?php echo $clientConfig['phone_number']; ?>" class="form-control" />
-							</div>
-						</div> <!-- /.form-group -->
-
-						<div class="form-group">
+						</dt>
+						<dd>
+							<input type="text" name="phone_number" value="<?php echo $clientConfig['phone_number']; ?>" class="txt" />
+						</dd>
+						<dt>
 							<label class="col-md-4">Detailed Pick Up</label>
-							<div class="col-md-8">
-								<input type="text" name="detailed_pickup" value="<?php echo $clientConfig['detailed_pickup']; ?>" class="form-control" />
-							</div>
-						</div> <!-- /.form-group -->
-
-						<div class="form-group">
+						</dt>
+						<dd>
+							<input type="text" name="detailed_pickup" value="<?php echo $clientConfig['detailed_pickup']; ?>" class="txt" />
+						</dd>
+						<dt>
 							<label class="col-md-4">Detailed Drop Off</label>
-							<div class="col-md-8">
-								<input type="text" name="detailed_dropoff" value="<?php echo $clientConfig['detailed_dropoff']; ?>" class="form-control" />
-							</div>
-						</div> <!-- /.form-group -->
-
-						<div class="form-group">
+						</dt>
+						<dd>
+							<input type="text" name="detailed_dropoff" value="<?php echo $clientConfig['detailed_dropoff']; ?>" class="txt" />
+						</dd>
+						<dt>
 							<label class="col-md-4">Company Email</label>
-							<div class="col-md-8">
-								<input type="text" name="company_email" value="<?php echo $clientConfig['company_email']; ?>" class="form-control" />
-							</div>
-						</div> <!-- /.form-group -->
-
-						<div class="form-group">
+						</dt>
+						<dd>
+							<input type="text" name="company_email" value="<?php echo $clientConfig['company_email']; ?>" class="txt" />
+						</dd>
+						<dt>
 							<label class="col-md-4">Number of Runs</label>
-							<div class="col-md-8">
-								<input type="text" name="number_of_runs" value="<?php echo $clientConfig['number_of_runs']; ?>" class="form-control" />
-							</div>
-						</div> <!-- /.form-group -->
+						</dt>
+						<dd>
+							<input type="text" name="number_of_runs" value="<?php echo $clientConfig['number_of_runs']; ?>" class="txt" />
+						</dd>
+						<dt>
+							<label class="col-md-4">Price Per Night</label>
+						</dt>
+						<dd>
+						  <input type="text" class="txt" name="price_pernight" value="<?php echo $clientConfig['price_pernight']; ?>">
+						</dd>
 
-						<div class="form-group">
+						<dt>
+							<label class="col-md-4">Price Per Night Two Dogs</label>
+						</dt>
+						<dd>
+						  <input type="text" class="txt" name="price_pernight_onerun" value="<?php echo $clientConfig['price_pernight_onerun']; ?>">
+						</dd>
 
-							<label class="col-md-4">
-								Price Per Night
-							</label>
-
-							<div class="col-md-8">
-								<div class="input-group">
-								  <span class="input-group-addon">$</span>
-								  <input type="text" class="form-control" name="price_pernight" value="<?php echo $clientConfig['price_pernight']; ?>">
-								</div>
-							</div>
-
-						</div> <!-- /.form-group -->
-
-						<div class="form-group">
-
-							<label class="col-md-4">
-								Price Per Night Two Dogs One Run
-							</label>
-
-							<div class="col-md-8">
-								<div class="input-group">
-								  <span class="input-group-addon">$</span>
-								  <input type="text" class="form-control" name="price_pernight_onerun" value="<?php echo $clientConfig['price_pernight_onerun']; ?>">
-								</div>
-							</div>
-
-						</div> <!-- /.form-group -->
-
-						<div class="form-group">
-
-							<label class="col-md-4">
-								Late Fee
-							</label>
-
-							<div class="col-md-8">
-								<div class="input-group">
-								  <span class="input-group-addon">$</span>
-								  <input type="text" class="form-control" name="price_latefee" value="<?php echo $clientConfig['price_latefee']; ?>">
-								</div>
-							</div>
-
-						</div> <!-- /.form-group -->
-
-						<div class="form-group">
+						<dt>
+							<label class="col-md-4">Late Fee</label>
+						</dt>
+						<dd>
+						  <input type="text" class="txt" name="price_latefee" value="<?php echo $clientConfig['price_latefee']; ?>">
+						</dd>
+						
+						<dt>
 							<label class="col-md-4">Facebook URL</label>
-							<div class="col-md-8">
-								<input type="text" name="facebook_url" value="<?php echo $clientConfig['facebook_url']; ?>" class="form-control" />
-							</div>
-						</div> <!-- /.form-group -->
-
-						<input type="submit" name="update_company" class="form-control" value="Update Company Details!"/>
-
-					</form>
-
-
-				</div> <!-- /.widget-content -->
-
-
-      		</div> <!-- /.widget -->
-
-      	</div> <!-- /.col-md-12 -->
-
-
-      </div> <!-- /.row -->
-
-    </div> <!-- /container -->
-    
-</div> <!-- /main -->
+						</dt>
+						<dd>
+							<input type="text" name="facebook_url" value="<?php echo $clientConfig['facebook_url']; ?>" class="txt" />
+						</dd>
+						
+						<dt></dt>
+						<dd>
+							<input type="submit" name="update_company" class="button" value="Update Company Details!"/>
+						</dd>
+					</dl>
+				</div>
+			</form>
+		</div>
+	</div>
+</div> 
